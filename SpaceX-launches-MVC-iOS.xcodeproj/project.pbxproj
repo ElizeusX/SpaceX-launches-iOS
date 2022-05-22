@@ -37,6 +37,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		259ED91D283A7BFE00B9D742 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25B6C393283A751600C8397D /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		259ED91E283A7C1300B9D742 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		259ED91F283A7C2200B9D742 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				25B6C395283A751600C8397D /* Main.storyboard */,
+				25B6C39A283A751900C8397D /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		25B6C383283A751600C8397D = {
 			isa = PBXGroup;
 			children = (
@@ -58,10 +82,10 @@
 			children = (
 				25B6C38F283A751600C8397D /* AppDelegate.swift */,
 				25B6C391283A751600C8397D /* SceneDelegate.swift */,
-				25B6C393283A751600C8397D /* ViewController.swift */,
-				25B6C395283A751600C8397D /* Main.storyboard */,
+				259ED91D283A7BFE00B9D742 /* Controllers */,
+				259ED91F283A7C2200B9D742 /* Views */,
+				259ED91E283A7C1300B9D742 /* Models */,
 				25B6C398283A751900C8397D /* Assets.xcassets */,
-				25B6C39A283A751900C8397D /* LaunchScreen.storyboard */,
 				25B6C39D283A751900C8397D /* Info.plist */,
 			);
 			path = "SpaceX-launches-MVC-iOS";
@@ -287,6 +311,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K3R8ZHZH34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SpaceX-launches-MVC-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -314,6 +339,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K3R8ZHZH34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SpaceX-launches-MVC-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
