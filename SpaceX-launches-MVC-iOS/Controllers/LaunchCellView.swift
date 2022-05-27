@@ -9,6 +9,8 @@ import UIKit
 
 class LaunchCellView: UICollectionViewCell {
 
-    @IBOutlet weak var launchNameLabel: UILabel!
-
+    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
 }
