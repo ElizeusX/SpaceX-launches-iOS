@@ -8,15 +8,27 @@
 import Foundation
 
 struct LaunchData: Codable {
-    let id: String?
-    let name: String?
+    let id: String
+    let name: String
     let success: Bool?
-    let date_utc: String?
-    let flight_number: Int?
+    let dateUtc: String
+    let flightNumber: Int
     let webcast: String?    // Video
     let patch: Patch?
-    let details: String?
-    let rocket: String?
+    let details: String
+    let rocket: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case success
+        case dateUtc = "date_utc"
+        case flightNumber = "flight_number"
+        case webcast
+        case patch
+        case details
+        case rocket
+    }
 }
 
 struct Patch: Codable {
