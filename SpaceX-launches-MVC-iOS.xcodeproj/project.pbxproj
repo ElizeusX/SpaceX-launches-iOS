@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		259ED921283ABCD900B9D742 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259ED920283ABCD900B9D742 /* Launch.swift */; };
+		256FB24328420AE6008FFC8D /* AlamofireEasyLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 256FB24228420AE6008FFC8D /* AlamofireEasyLogger */; };
+		259ED921283ABCD900B9D742 /* LaunchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259ED920283ABCD900B9D742 /* LaunchData.swift */; };
 		259ED923283ABF4D00B9D742 /* LaunchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259ED922283ABF4D00B9D742 /* LaunchCellView.swift */; };
 		259ED925283AC51400B9D742 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259ED924283AC51400B9D742 /* Constants.swift */; };
 		259ED928283D635800B9D742 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 259ED927283D635800B9D742 /* Alamofire */; };
+		259ED92B283EC82C00B9D742 /* LaunchesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259ED92A283EC82C00B9D742 /* LaunchesService.swift */; };
 		25B6C390283A751600C8397D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B6C38F283A751600C8397D /* AppDelegate.swift */; };
 		25B6C392283A751600C8397D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B6C391283A751600C8397D /* SceneDelegate.swift */; };
 		25B6C394283A751600C8397D /* LaunchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B6C393283A751600C8397D /* LaunchListViewController.swift */; };
@@ -20,9 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		259ED920283ABCD900B9D742 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		259ED920283ABCD900B9D742 /* LaunchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchData.swift; sourceTree = "<group>"; };
 		259ED922283ABF4D00B9D742 /* LaunchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCellView.swift; sourceTree = "<group>"; };
 		259ED924283AC51400B9D742 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		259ED92A283EC82C00B9D742 /* LaunchesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesService.swift; sourceTree = "<group>"; };
 		25B6C38C283A751600C8397D /* SpaceX-launches-MVC-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceX-launches-MVC-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B6C38F283A751600C8397D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B6C391283A751600C8397D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				259ED928283D635800B9D742 /* Alamofire in Frameworks */,
+				256FB24328420AE6008FFC8D /* AlamofireEasyLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +61,8 @@
 		259ED91E283A7C1300B9D742 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				259ED920283ABCD900B9D742 /* Launch.swift */,
+				259ED929283EB93600B9D742 /* Services */,
+				259ED920283ABCD900B9D742 /* LaunchData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -69,6 +74,14 @@
 				25B6C39A283A751900C8397D /* LaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		259ED929283EB93600B9D742 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				259ED92A283EC82C00B9D742 /* LaunchesService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		25B6C383283A751600C8397D = {
@@ -120,6 +133,7 @@
 			name = "SpaceX-launches-MVC-iOS";
 			packageProductDependencies = (
 				259ED927283D635800B9D742 /* Alamofire */,
+				256FB24228420AE6008FFC8D /* AlamofireEasyLogger */,
 			);
 			productName = "SpaceX-launches-MVC-iOS";
 			productReference = 25B6C38C283A751600C8397D /* SpaceX-launches-MVC-iOS.app */;
@@ -151,6 +165,7 @@
 			mainGroup = 25B6C383283A751600C8397D;
 			packageReferences = (
 				259ED926283D635800B9D742 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				256FB24128420AE5008FFC8D /* XCRemoteSwiftPackageReference "AlamofireEasyLogger" */,
 			);
 			productRefGroup = 25B6C38D283A751600C8397D /* Products */;
 			projectDirPath = "";
@@ -182,8 +197,9 @@
 				259ED923283ABF4D00B9D742 /* LaunchCellView.swift in Sources */,
 				25B6C394283A751600C8397D /* LaunchListViewController.swift in Sources */,
 				25B6C390283A751600C8397D /* AppDelegate.swift in Sources */,
-				259ED921283ABCD900B9D742 /* Launch.swift in Sources */,
+				259ED921283ABCD900B9D742 /* LaunchData.swift in Sources */,
 				25B6C392283A751600C8397D /* SceneDelegate.swift in Sources */,
+				259ED92B283EC82C00B9D742 /* LaunchesService.swift in Sources */,
 				259ED925283AC51400B9D742 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +420,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		256FB24128420AE5008FFC8D /* XCRemoteSwiftPackageReference "AlamofireEasyLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jankaltoun/AlamofireEasyLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		259ED926283D635800B9D742 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -415,6 +439,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		256FB24228420AE6008FFC8D /* AlamofireEasyLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 256FB24128420AE5008FFC8D /* XCRemoteSwiftPackageReference "AlamofireEasyLogger" */;
+			productName = AlamofireEasyLogger;
+		};
 		259ED927283D635800B9D742 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 259ED926283D635800B9D742 /* XCRemoteSwiftPackageReference "Alamofire" */;
