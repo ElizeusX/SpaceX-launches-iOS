@@ -29,22 +29,43 @@
                             <constraint firstAttribute="height" constant="80" id="oB1-mk-mea"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP2-Iz-wAm">
+                        <rect key="frame" x="208" y="126" width="80" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="743-4S-M3Z"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2k-aC-xrK">
+                        <rect key="frame" x="10" y="39.5" width="32.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" red="0.1919852229" green="0.2142982252" blue="0.2914763105" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="GWA-gt-p1a" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1M6-18-2DZ"/>
+                <constraint firstItem="zP2-Iz-wAm" firstAttribute="top" secondItem="GWA-gt-p1a" secondAttribute="bottom" constant="10" id="Bxn-0J-gVt"/>
+                <constraint firstItem="a2k-aC-xrK" firstAttribute="top" secondItem="2V6-pS-l1Z" secondAttribute="bottom" constant="8" id="E5Q-J3-Byu"/>
                 <constraint firstItem="2V6-pS-l1Z" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="JmV-eg-FsY"/>
+                <constraint firstAttribute="trailing" secondItem="zP2-Iz-wAm" secondAttribute="trailing" constant="20" id="VKt-Jd-4bb"/>
                 <constraint firstItem="2V6-pS-l1Z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="YK2-j1-HIZ"/>
                 <constraint firstAttribute="trailing" secondItem="GWA-gt-p1a" secondAttribute="trailing" constant="20" id="ZON-fv-ZfU"/>
+                <constraint firstItem="a2k-aC-xrK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="fhj-ah-wRO"/>
             </constraints>
             <size key="customSize" width="312" height="152"/>
             <connections>
+                <outlet property="dateLabel" destination="a2k-aC-xrK" id="SVW-g8-MVS"/>
                 <outlet property="imageView" destination="GWA-gt-p1a" id="jAP-F7-Fy3"/>
                 <outlet property="nameLabel" destination="2V6-pS-l1Z" id="AYp-Ww-YaQ"/>
+                <outlet property="successLabel" destination="zP2-Iz-wAm" id="b5H-dR-kRy"/>
             </connections>
-            <point key="canvasLocation" x="166.66666666666669" y="55.580357142857139"/>
+            <point key="canvasLocation" x="107" y="61"/>
         </collectionViewCell>
     </objects>
 </document>
