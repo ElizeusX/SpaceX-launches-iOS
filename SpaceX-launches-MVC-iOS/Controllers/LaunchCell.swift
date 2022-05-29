@@ -7,9 +7,9 @@
 
 import UIKit
 
-class LaunchCellView: UICollectionViewCell {
+class LaunchCell: UICollectionViewCell {
 
-    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
