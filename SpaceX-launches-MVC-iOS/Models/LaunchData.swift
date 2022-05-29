@@ -13,10 +13,9 @@ struct LaunchData: Codable {
     let success: Bool?
     let dateUtc: String?
     let flightNumber: Int?
-    let webcast: String?    // Video
-    let patch: Patch?
     let details: String?
     let rocket: String?
+    let links: Links?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -24,11 +23,15 @@ struct LaunchData: Codable {
         case success
         case dateUtc = "date_utc"
         case flightNumber = "flight_number"
-        case webcast
-        case patch
         case details
         case rocket
+        case links
     }
+}
+
+struct Links: Codable {
+    let webcast: String?    // Video
+    let patch: Patch?
 }
 
 struct Patch: Codable {
