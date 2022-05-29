@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import Alamofire
 
-class LaunchesService {
+class LaunchService {
 
     @Published var launchData: [LaunchData] = []
     var launchCount: Int? { launchData.count }

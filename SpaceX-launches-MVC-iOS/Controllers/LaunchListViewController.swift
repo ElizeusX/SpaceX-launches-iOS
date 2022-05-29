@@ -12,7 +12,7 @@ class LaunchListViewController: UIViewController, UICollectionViewDataSource, UI
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    private var launchService = LaunchesService()
+    private var launchService = LaunchService()
     private var launchDataSubscriber: AnyCancellable?
 
     override func viewDidLoad() {
