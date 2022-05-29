@@ -32,9 +32,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wWY-Bj-S4t">
-                                <rect key="frame" x="20" y="39" width="374" height="818"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wWY-Bj-S4t">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WWi-zI-Yxx">
                                     <size key="itemSize" width="128" height="128"/>
@@ -47,6 +46,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wWY-Bj-S4t" secondAttribute="bottom" id="P7S-Kd-QGh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wWY-Bj-S4t" secondAttribute="trailing" id="cmK-0F-lmr"/>
+                            <constraint firstItem="wWY-Bj-S4t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="coZ-TT-fLq"/>
+                            <constraint firstItem="wWY-Bj-S4t" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dJd-R3-8pD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="me4-QJ-JS2"/>
                     <connections>
