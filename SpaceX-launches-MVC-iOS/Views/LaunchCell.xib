@@ -10,10 +10,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="launchCell" id="gTV-IL-0wX" customClass="LaunchCell" customModule="SpaceX_launches_MVC_iOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="289" height="123"/>
+            <rect key="frame" x="0.0" y="0.0" width="308" height="152"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="289" height="123"/>
+                <rect key="frame" x="0.0" y="0.0" width="308" height="152"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V6-pS-l1Z">
@@ -22,24 +22,29 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWA-gt-p1a">
-                        <rect key="frame" x="189" y="20" width="80" height="69"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GWA-gt-p1a">
+                        <rect key="frame" x="208" y="36" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="UhK-LN-Akp"/>
+                            <constraint firstAttribute="height" constant="80" id="oB1-mk-mea"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" red="0.1919852229" green="0.2142982252" blue="0.2914763105" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="GWA-gt-p1a" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1M6-18-2DZ"/>
                 <constraint firstItem="2V6-pS-l1Z" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="JmV-eg-FsY"/>
                 <constraint firstItem="2V6-pS-l1Z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="YK2-j1-HIZ"/>
+                <constraint firstAttribute="trailing" secondItem="GWA-gt-p1a" secondAttribute="trailing" constant="20" id="ZON-fv-ZfU"/>
             </constraints>
-            <size key="customSize" width="293" height="123"/>
+            <size key="customSize" width="312" height="152"/>
             <connections>
-                <outlet property="logoImage" destination="GWA-gt-p1a" id="jAP-F7-Fy3"/>
+                <outlet property="imageView" destination="GWA-gt-p1a" id="jAP-F7-Fy3"/>
                 <outlet property="nameLabel" destination="2V6-pS-l1Z" id="AYp-Ww-YaQ"/>
             </connections>
-            <point key="canvasLocation" x="153" y="46"/>
+            <point key="canvasLocation" x="166.66666666666669" y="55.580357142857139"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 class LaunchCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,8 +18,7 @@ class LaunchCell: UICollectionViewCell {
     }
 
     func setupCell(launchData: LaunchData) {
-        // TODO: set image through url
-//        self.logoImage.image = launchData.patch?.small
+        self.imageView.downloaded(from: launchData.links?.patch?.small ?? "")
         self.nameLabel.text = launchData.name
         
     }
