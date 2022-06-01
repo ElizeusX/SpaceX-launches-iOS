@@ -53,8 +53,6 @@ extension LaunchListViewController: UICollectionViewDataSource, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LaunchCell = collectionView.dequeueReusableCell(withReuseIdentifier: "launchCell", for: indexPath) as! LaunchCell
-        // (For test) TODO: correctly display cell
-//        cell.nameLabel?.text = launchService.cellItem(for: indexPath.item).name
         let launch = launchService.cellItem(for: indexPath.item)
         cell.setupCell(launchData: launch)
 
