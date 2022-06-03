@@ -13,18 +13,14 @@ class LaunchListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     private var launchService = LaunchService()
-    private var launchDataSubscriber: AnyCancellable?
+    private var cancellable: Set<AnyCancellable> = []
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         launchService.fetchData()
         reloadCollectionView()
         registerCollectionView()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.launchDataSubscriber?.cancel()
     }
 
     func registerCollectionView() {
@@ -37,11 +33,11 @@ class LaunchListViewController: UIViewController {
     }
 
     func reloadCollectionView(){
-        self.launchDataSubscriber = launchService.$launchData.sink { data in
+        launchService.$rocketData.sink { [weak self] data in
             if !data.isEmpty {
-                self.collectionView.reloadData()
+                self?.collectionView.reloadData()
             }
-        }
+        }.store(in: &cancellable)
     }
 }
 
@@ -53,8 +49,8 @@ extension LaunchListViewController: UICollectionViewDataSource, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LaunchCell = collectionView.dequeueReusableCell(withReuseIdentifier: "launchCell", for: indexPath) as! LaunchCell
-        let launch = launchService.cellItem(for: indexPath.item)
-        cell.setupCell(launchData: launch)
+        let launches = launchService.cellLaunchItem(for: indexPath.item)
+        cell.setupCell(launchData: launches, rocketData: launchService.rocketData)
 
         return cell
     }

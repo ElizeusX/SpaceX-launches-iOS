@@ -12,17 +12,17 @@ struct RocketData: Codable {
     let name: String?
     let description: String?
     let wikipedia: String?
-    let height: Height?
+    let height: Diameter?
     let mass: Mass?
     let engines: Engines?
 }
 
-struct Height: Codable {
+struct Diameter: Codable {
     let meters: Double?
 }
 
 struct Mass: Codable {
-    let kg: Double?
+    let kg: Int?
 }
 
 struct Engines: Codable {

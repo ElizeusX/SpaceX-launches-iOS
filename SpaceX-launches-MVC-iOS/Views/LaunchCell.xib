@@ -44,6 +44,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOU-Rz-WFh">
+                        <rect key="frame" x="10" y="65.5" width="48" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -56,13 +62,16 @@
                 <constraint firstAttribute="trailing" secondItem="zP2-Iz-wAm" secondAttribute="trailing" constant="20" id="VKt-Jd-4bb"/>
                 <constraint firstItem="2V6-pS-l1Z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="YK2-j1-HIZ"/>
                 <constraint firstAttribute="trailing" secondItem="GWA-gt-p1a" secondAttribute="trailing" constant="20" id="ZON-fv-ZfU"/>
+                <constraint firstItem="cOU-Rz-WFh" firstAttribute="top" secondItem="a2k-aC-xrK" secondAttribute="bottom" constant="8" id="aGV-Ex-L5y"/>
                 <constraint firstItem="a2k-aC-xrK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="fhj-ah-wRO"/>
+                <constraint firstItem="cOU-Rz-WFh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="hQW-q7-mwA"/>
             </constraints>
             <size key="customSize" width="312" height="152"/>
             <connections>
                 <outlet property="dateLabel" destination="a2k-aC-xrK" id="SVW-g8-MVS"/>
                 <outlet property="imageView" destination="GWA-gt-p1a" id="jAP-F7-Fy3"/>
                 <outlet property="nameLabel" destination="2V6-pS-l1Z" id="AYp-Ww-YaQ"/>
+                <outlet property="rocketLabel" destination="cOU-Rz-WFh" id="3c7-qV-AV6"/>
                 <outlet property="successLabel" destination="zP2-Iz-wAm" id="b5H-dR-kRy"/>
             </connections>
             <point key="canvasLocation" x="107" y="61"/>
