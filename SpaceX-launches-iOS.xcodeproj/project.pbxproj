@@ -10,6 +10,7 @@
 		250E0E052843E51C00AC939C /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E0E042843E51C00AC939C /* DateService.swift */; };
 		256FB24328420AE6008FFC8D /* AlamofireEasyLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 256FB24228420AE6008FFC8D /* AlamofireEasyLogger */; };
 		2599E0272847E4900020B5B4 /* RocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2599E0262847E4900020B5B4 /* RocketData.swift */; };
+		259A0406284BB70300933D1A /* LaunchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259A0405284BB70300933D1A /* LaunchListViewModel.swift */; };
 		259ED921283ABCD900B9D742 /* LaunchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259ED920283ABCD900B9D742 /* LaunchData.swift */; };
 		259ED925283AC51400B9D742 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259ED924283AC51400B9D742 /* Constants.swift */; };
 		259ED928283D635800B9D742 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 259ED927283D635800B9D742 /* Alamofire */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		250E0E042843E51C00AC939C /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		2599E0262847E4900020B5B4 /* RocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketData.swift; sourceTree = "<group>"; };
+		259A0405284BB70300933D1A /* LaunchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListViewModel.swift; sourceTree = "<group>"; };
 		259ED920283ABCD900B9D742 /* LaunchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchData.swift; sourceTree = "<group>"; };
 		259ED924283AC51400B9D742 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		259ED92A283EC82C00B9D742 /* LaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchService.swift; sourceTree = "<group>"; };
@@ -57,13 +59,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		259ED91D283A7BFE00B9D742 /* Controllers */ = {
+		259A0403284BB59A00933D1A /* LaunchList */ = {
 			isa = PBXGroup;
 			children = (
 				25B6C393283A751600C8397D /* LaunchListViewController.swift */,
-				25C81D0F284386A70071A49C /* LaunchCell.swift */,
+				25B6C395283A751600C8397D /* Main.storyboard */,
+				259A0404284BB5DC00933D1A /* Cells */,
 			);
-			path = Controllers;
+			path = LaunchList;
+			sourceTree = "<group>";
+		};
+		259A0404284BB5DC00933D1A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				25C81D0F284386A70071A49C /* LaunchCell.swift */,
+				25C81D10284386A70071A49C /* LaunchCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		259ED91D283A7BFE00B9D742 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				259A0405284BB70300933D1A /* LaunchListViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		259ED91E283A7C1300B9D742 /* Models */ = {
@@ -79,8 +99,7 @@
 		259ED91F283A7C2200B9D742 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				25C81D10284386A70071A49C /* LaunchCell.xib */,
-				25B6C395283A751600C8397D /* Main.storyboard */,
+				259A0403284BB59A00933D1A /* LaunchList */,
 				25B6C39A283A751900C8397D /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -116,7 +135,7 @@
 				25B6C38F283A751600C8397D /* AppDelegate.swift */,
 				25B6C391283A751600C8397D /* SceneDelegate.swift */,
 				259ED924283AC51400B9D742 /* Constants.swift */,
-				259ED91D283A7BFE00B9D742 /* Controllers */,
+				259ED91D283A7BFE00B9D742 /* ViewModels */,
 				259ED91F283A7C2200B9D742 /* Views */,
 				259ED91E283A7C1300B9D742 /* Models */,
 				25C81D132843C75B0071A49C /* Components */,
@@ -216,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				250E0E052843E51C00AC939C /* DateService.swift in Sources */,
+				259A0406284BB70300933D1A /* LaunchListViewModel.swift in Sources */,
 				25B6C394283A751600C8397D /* LaunchListViewController.swift in Sources */,
 				25B6C390283A751600C8397D /* AppDelegate.swift in Sources */,
 				2599E0272847E4900020B5B4 /* RocketData.swift in Sources */,
