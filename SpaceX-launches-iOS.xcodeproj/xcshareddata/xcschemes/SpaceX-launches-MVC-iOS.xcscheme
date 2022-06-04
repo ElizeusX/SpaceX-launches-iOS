@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "25B6C38B283A751600C8397D"
-               BuildableName = "SpaceX-launches-MVC-iOS.app"
+               BuildableName = "SpaceX-launches-iOS.app"
                BlueprintName = "SpaceX-launches-iOS"
                ReferencedContainer = "container:SpaceX-launches-iOS.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "25B6C38B283A751600C8397D"
-            BuildableName = "SpaceX-launches-MVC-iOS.app"
+            BuildableName = "SpaceX-launches-iOS.app"
             BlueprintName = "SpaceX-launches-iOS"
             ReferencedContainer = "container:SpaceX-launches-iOS.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "25B6C38B283A751600C8397D"
-            BuildableName = "SpaceX-launches-MVC-iOS.app"
+            BuildableName = "SpaceX-launches-iOS.app"
             BlueprintName = "SpaceX-launches-iOS"
             ReferencedContainer = "container:SpaceX-launches-iOS.xcodeproj">
          </BuildableReference>
