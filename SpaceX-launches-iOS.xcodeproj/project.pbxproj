@@ -31,7 +31,7 @@
 		259ED920283ABCD900B9D742 /* LaunchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchData.swift; sourceTree = "<group>"; };
 		259ED924283AC51400B9D742 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		259ED92A283EC82C00B9D742 /* LaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchService.swift; sourceTree = "<group>"; };
-		25B6C38C283A751600C8397D /* SpaceX-launches-MVC-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceX-launches-MVC-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25B6C38C283A751600C8397D /* SpaceX-launches-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceX-launches-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B6C38F283A751600C8397D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B6C391283A751600C8397D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		25B6C393283A751600C8397D /* LaunchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		25B6C383283A751600C8397D = {
 			isa = PBXGroup;
 			children = (
-				25B6C38E283A751600C8397D /* SpaceX-launches-MVC-iOS */,
+				25B6C38E283A751600C8397D /* SpaceX-launches-iOS */,
 				25B6C38D283A751600C8397D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,12 +105,12 @@
 		25B6C38D283A751600C8397D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				25B6C38C283A751600C8397D /* SpaceX-launches-MVC-iOS.app */,
+				25B6C38C283A751600C8397D /* SpaceX-launches-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		25B6C38E283A751600C8397D /* SpaceX-launches-MVC-iOS */ = {
+		25B6C38E283A751600C8397D /* SpaceX-launches-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				25B6C38F283A751600C8397D /* AppDelegate.swift */,
@@ -123,7 +123,7 @@
 				25B6C398283A751900C8397D /* Assets.xcassets */,
 				25B6C39D283A751900C8397D /* Info.plist */,
 			);
-			path = "SpaceX-launches-MVC-iOS";
+			path = "SpaceX-launches-iOS";
 			sourceTree = "<group>";
 		};
 		25C81D132843C75B0071A49C /* Components */ = {
@@ -138,9 +138,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		25B6C38B283A751600C8397D /* SpaceX-launches-MVC-iOS */ = {
+		25B6C38B283A751600C8397D /* SpaceX-launches-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 25B6C3A0283A751900C8397D /* Build configuration list for PBXNativeTarget "SpaceX-launches-MVC-iOS" */;
+			buildConfigurationList = 25B6C3A0283A751900C8397D /* Build configuration list for PBXNativeTarget "SpaceX-launches-iOS" */;
 			buildPhases = (
 				25B6C388283A751600C8397D /* Sources */,
 				25B6C389283A751600C8397D /* Frameworks */,
@@ -150,13 +150,13 @@
 			);
 			dependencies = (
 			);
-			name = "SpaceX-launches-MVC-iOS";
+			name = "SpaceX-launches-iOS";
 			packageProductDependencies = (
 				259ED927283D635800B9D742 /* Alamofire */,
 				256FB24228420AE6008FFC8D /* AlamofireEasyLogger */,
 			);
 			productName = "SpaceX-launches-MVC-iOS";
-			productReference = 25B6C38C283A751600C8397D /* SpaceX-launches-MVC-iOS.app */;
+			productReference = 25B6C38C283A751600C8397D /* SpaceX-launches-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -174,7 +174,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 25B6C387283A751600C8397D /* Build configuration list for PBXProject "SpaceX-launches-MVC-iOS" */;
+			buildConfigurationList = 25B6C387283A751600C8397D /* Build configuration list for PBXProject "SpaceX-launches-iOS" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -191,7 +191,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				25B6C38B283A751600C8397D /* SpaceX-launches-MVC-iOS */,
+				25B6C38B283A751600C8397D /* SpaceX-launches-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -373,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K3R8ZHZH34;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SpaceX-launches-MVC-iOS/Info.plist";
+				INFOPLIST_FILE = "SpaceX-launches-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -401,7 +401,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K3R8ZHZH34;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SpaceX-launches-MVC-iOS/Info.plist";
+				INFOPLIST_FILE = "SpaceX-launches-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -423,7 +423,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		25B6C387283A751600C8397D /* Build configuration list for PBXProject "SpaceX-launches-MVC-iOS" */ = {
+		25B6C387283A751600C8397D /* Build configuration list for PBXProject "SpaceX-launches-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25B6C39E283A751900C8397D /* Debug */,
@@ -432,7 +432,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		25B6C3A0283A751900C8397D /* Build configuration list for PBXNativeTarget "SpaceX-launches-MVC-iOS" */ = {
+		25B6C3A0283A751900C8397D /* Build configuration list for PBXNativeTarget "SpaceX-launches-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25B6C3A1283A751900C8397D /* Debug */,

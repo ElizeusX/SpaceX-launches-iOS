@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "25B6C38B283A751600C8397D"
                BuildableName = "SpaceX-launches-MVC-iOS.app"
-               BlueprintName = "SpaceX-launches-MVC-iOS"
-               ReferencedContainer = "container:SpaceX-launches-MVC-iOS.xcodeproj">
+               BlueprintName = "SpaceX-launches-iOS"
+               ReferencedContainer = "container:SpaceX-launches-iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,8 +46,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "25B6C38B283A751600C8397D"
             BuildableName = "SpaceX-launches-MVC-iOS.app"
-            BlueprintName = "SpaceX-launches-MVC-iOS"
-            ReferencedContainer = "container:SpaceX-launches-MVC-iOS.xcodeproj">
+            BlueprintName = "SpaceX-launches-iOS"
+            ReferencedContainer = "container:SpaceX-launches-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "25B6C38B283A751600C8397D"
             BuildableName = "SpaceX-launches-MVC-iOS.app"
-            BlueprintName = "SpaceX-launches-MVC-iOS"
-            ReferencedContainer = "container:SpaceX-launches-MVC-iOS.xcodeproj">
+            BlueprintName = "SpaceX-launches-iOS"
+            ReferencedContainer = "container:SpaceX-launches-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
