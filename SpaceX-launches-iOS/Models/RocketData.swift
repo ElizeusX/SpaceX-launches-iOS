@@ -1,6 +1,6 @@
 //
 //  RocketData.swift
-//  SpaceX-launches-MVC-iOS
+//  SpaceX-launches-iOS
 //
 //  Created by Elizeus on 01.06.2022.
 //

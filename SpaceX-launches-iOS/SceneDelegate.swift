@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  SpaceX-launches-MVC-iOS
+//  SpaceX-launches-iOS
 //
 //  Created by Elizeus on 22.05.2022.
 //

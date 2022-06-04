@@ -1,6 +1,6 @@
 //
 //  LaunchCell.swift
-//  SpaceX-launches-MVC-iOS
+//  SpaceX-launches-iOS
 //
 //  Created by Elizeus on 29.05.2022.
 //
