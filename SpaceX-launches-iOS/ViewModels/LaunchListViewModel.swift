@@ -23,6 +23,7 @@ final class LaunchListViewModel {
             if success {
                 isDataLoaded = true
             } else {
+                // TODO: Display error for user
                 error = "Something went wrong, unable to fetch data. Please, check internet connection and reload the app"
             }
         }
