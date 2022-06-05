@@ -6,42 +6,44 @@
 //
 
 import Foundation
-import Combine
 import Alamofire
 
-class LaunchService {
+final class LaunchService {
+
+    static let shared = LaunchService()
 
     var launchData: [LaunchData] = []
-    @Published var rocketData: [RocketData] = []
+    var rocketData: [RocketData] = []
 
-    var launchCount: Int? { launchData.count }
-
-    func cellLaunchItem(for row: Int) -> LaunchData{
-        return launchData[row]
-    }
-
-    func fetchData() {
+    func fetchLaunchData(completion: @escaping(Bool) -> Void) {
         AF.request(Constants.URLs.launchesUrl,
                    method: .get,
                    headers: Constants.headers).response { response in
             guard let jsonData = response.data else {
                 print("No data")
+                completion(false)
                 return
             }
             do {
                 self.launchData = try JSONDecoder().decode([LaunchData].self, from: jsonData)
-                self.fetchRocketData()
+                self.fetchRocketData { success in
+                    completion(success)
+                }
             } catch {
                 print(error.localizedDescription)
+                completion(false)
             }
         }
     }
 
-    func fetchRocketData() {
-        // For remove duplicates ids
-        let ids: [String] = Array(Set(launchData.map({ $0.rocket ?? String() })))
+    func fetchRocketData(completion: @escaping(Bool) -> Void) {
         // Delete old data when reload list/collection view
         self.rocketData.removeAll()
+        // For remove duplicates ids
+        let ids: [String] = Array(Set(launchData.map({ $0.rocket ?? String() })))
+        var isLoopEnd: Bool {
+            ids.count == self.rocketData.count
+        }
 
         for id in ids {
             var url: String {"\(Constants.URLs.rocketsUrl)/\(id)"}
@@ -51,13 +53,18 @@ class LaunchService {
                        headers: Constants.headers).response { response in
                 guard let jsonData = response.data else {
                     print("No data")
+                    completion(false)
                     return
                 }
                 do {
                     let decodedResponse = try JSONDecoder().decode(RocketData.self, from: jsonData)
                     self.rocketData += [decodedResponse]
+                    if isLoopEnd {
+                        completion(true)
+                    }
                 } catch {
                     print(error.localizedDescription)
+                    completion(false)
                 }
             }
         }

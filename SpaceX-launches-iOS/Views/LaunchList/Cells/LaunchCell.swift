@@ -20,10 +20,11 @@ class LaunchCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func setupCell(launchData: LaunchData, rocketData: [RocketData]) {
+    func setupCell(launchData: LaunchData, rocketData: RocketData?) {
         self.imageView.downloaded(from: launchData.links?.patch?.small ?? "")
         self.nameLabel.text = launchData.name
         self.dateLabel.text = DateService.convertStringToDate(from: launchData.dateUtc ?? "")
+        self.rocketLabel.text = rocketData?.name
 
         if let success = launchData.success {
             self.successLabel.text = success ? "Success" : "Failure"
@@ -32,9 +33,5 @@ class LaunchCell: UICollectionViewCell {
             self.successLabel.text = "Success"
             self.successLabel.textColor = .gray
         }
-
-        let rocket = rocketData.filter { $0.id == launchData.rocket }.first
-        self.rocketLabel.text = rocket?.name
     }
-
 }
