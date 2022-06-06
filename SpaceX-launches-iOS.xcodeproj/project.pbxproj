@@ -24,6 +24,9 @@
 		25C81D11284386A70071A49C /* LaunchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C81D0F284386A70071A49C /* LaunchCell.swift */; };
 		25C81D12284386A70071A49C /* LaunchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C81D10284386A70071A49C /* LaunchCell.xib */; };
 		25C81D152843C8800071A49C /* ImageUrlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C81D142843C8800071A49C /* ImageUrlExtension.swift */; };
+		25D620AC284D230E0058D972 /* LaunchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D620AA284D230E0058D972 /* LaunchDetailViewController.swift */; };
+		25D620AD284D230E0058D972 /* LaunchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D620AB284D230E0058D972 /* LaunchDetailViewController.xib */; };
+		25D620AF284D434B0058D972 /* LaunchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D620AE284D434B0058D972 /* LaunchDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		25C81D0F284386A70071A49C /* LaunchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCell.swift; sourceTree = "<group>"; };
 		25C81D10284386A70071A49C /* LaunchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchCell.xib; sourceTree = "<group>"; };
 		25C81D142843C8800071A49C /* ImageUrlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlExtension.swift; sourceTree = "<group>"; };
+		25D620AA284D230E0058D972 /* LaunchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewController.swift; sourceTree = "<group>"; };
+		25D620AB284D230E0058D972 /* LaunchDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchDetailViewController.xib; sourceTree = "<group>"; };
+		25D620AE284D434B0058D972 /* LaunchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchDetailViewModel.swift; path = ../../../../../../Downloads/LaunchDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +84,20 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		259A0407284D1FE000933D1A /* LaunchDetail */ = {
+			isa = PBXGroup;
+			children = (
+				25D620AA284D230E0058D972 /* LaunchDetailViewController.swift */,
+				25D620AB284D230E0058D972 /* LaunchDetailViewController.xib */,
+			);
+			path = LaunchDetail;
+			sourceTree = "<group>";
+		};
 		259ED91D283A7BFE00B9D742 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				259A0405284BB70300933D1A /* LaunchListViewModel.swift */,
+				25D620AE284D434B0058D972 /* LaunchDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -99,6 +115,7 @@
 		259ED91F283A7C2200B9D742 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				259A0407284D1FE000933D1A /* LaunchDetail */,
 				259A0403284BB59A00933D1A /* LaunchList */,
 				25B6C39A283A751900C8397D /* LaunchScreen.storyboard */,
 			);
@@ -220,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D620AD284D230E0058D972 /* LaunchDetailViewController.xib in Resources */,
 				25B6C39C283A751900C8397D /* LaunchScreen.storyboard in Resources */,
 				25B6C399283A751900C8397D /* Assets.xcassets in Resources */,
 				25C81D12284386A70071A49C /* LaunchCell.xib in Resources */,
@@ -234,10 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D620AF284D434B0058D972 /* LaunchDetailViewModel.swift in Sources */,
 				250E0E052843E51C00AC939C /* DateService.swift in Sources */,
 				259A0406284BB70300933D1A /* LaunchListViewModel.swift in Sources */,
 				25B6C394283A751600C8397D /* LaunchListViewController.swift in Sources */,
 				25B6C390283A751600C8397D /* AppDelegate.swift in Sources */,
+				25D620AC284D230E0058D972 /* LaunchDetailViewController.swift in Sources */,
 				2599E0272847E4900020B5B4 /* RocketData.swift in Sources */,
 				259ED921283ABCD900B9D742 /* LaunchData.swift in Sources */,
 				25B6C392283A751600C8397D /* SceneDelegate.swift in Sources */,
