@@ -39,6 +39,14 @@ class LaunchListViewController: UIViewController {
             }
         }.store(in: &cancellable)
     }
+
+    func segueToLaunchDetailView(launchData: LaunchData, rocketData: RocketData?) {
+        let launchDetailVC = LaunchDetailViewController(nibName: "LaunchDetailViewController", bundle: nil)
+        launchDetailVC.viewModel.launchData = launchData
+        launchDetailVC.viewModel.rocketData = rocketData
+
+        present(launchDetailVC, animated: true, completion: nil)
+    }
 }
 
 extension LaunchListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -62,6 +70,12 @@ extension LaunchListViewController: UICollectionViewDataSource, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let launch = viewModel.cellLaunchItem(for: indexPath.item)
+        let rocket = viewModel.cellCurrentRocket(launch: launch)
+        segueToLaunchDetailView(launchData: launch, rocketData: rocket)
     }
 }
 
