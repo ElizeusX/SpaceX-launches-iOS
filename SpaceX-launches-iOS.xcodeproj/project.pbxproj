@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		250E0E052843E51C00AC939C /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E0E042843E51C00AC939C /* DateService.swift */; };
 		256FB24328420AE6008FFC8D /* AlamofireEasyLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 256FB24228420AE6008FFC8D /* AlamofireEasyLogger */; };
+		25794B782851031200B2F72A /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25794B772851031200B2F72A /* LabelExtension.swift */; };
 		2599E0272847E4900020B5B4 /* RocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2599E0262847E4900020B5B4 /* RocketData.swift */; };
 		259A0406284BB70300933D1A /* LaunchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259A0405284BB70300933D1A /* LaunchListViewModel.swift */; };
 		259ED921283ABCD900B9D742 /* LaunchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259ED920283ABCD900B9D742 /* LaunchData.swift */; };
@@ -23,7 +24,7 @@
 		25B6C39C283A751900C8397D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B6C39A283A751900C8397D /* LaunchScreen.storyboard */; };
 		25C81D11284386A70071A49C /* LaunchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C81D0F284386A70071A49C /* LaunchCell.swift */; };
 		25C81D12284386A70071A49C /* LaunchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C81D10284386A70071A49C /* LaunchCell.xib */; };
-		25C81D152843C8800071A49C /* ImageUrlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C81D142843C8800071A49C /* ImageUrlExtension.swift */; };
+		25C81D152843C8800071A49C /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C81D142843C8800071A49C /* ImageExtension.swift */; };
 		25D620AC284D230E0058D972 /* LaunchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D620AA284D230E0058D972 /* LaunchDetailViewController.swift */; };
 		25D620AD284D230E0058D972 /* LaunchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D620AB284D230E0058D972 /* LaunchDetailViewController.xib */; };
 		25D620AF284D434B0058D972 /* LaunchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D620AE284D434B0058D972 /* LaunchDetailViewModel.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		250E0E042843E51C00AC939C /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
+		25794B772851031200B2F72A /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		2599E0262847E4900020B5B4 /* RocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketData.swift; sourceTree = "<group>"; };
 		259A0405284BB70300933D1A /* LaunchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListViewModel.swift; sourceTree = "<group>"; };
 		259ED920283ABCD900B9D742 /* LaunchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchData.swift; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		25B6C39D283A751900C8397D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C81D0F284386A70071A49C /* LaunchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCell.swift; sourceTree = "<group>"; };
 		25C81D10284386A70071A49C /* LaunchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchCell.xib; sourceTree = "<group>"; };
-		25C81D142843C8800071A49C /* ImageUrlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlExtension.swift; sourceTree = "<group>"; };
+		25C81D142843C8800071A49C /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		25D620AA284D230E0058D972 /* LaunchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewController.swift; sourceTree = "<group>"; };
 		25D620AB284D230E0058D972 /* LaunchDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchDetailViewController.xib; sourceTree = "<group>"; };
 		25D620AE284D434B0058D972 /* LaunchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchDetailViewModel.swift; path = ../../../../../../Downloads/LaunchDetailViewModel.swift; sourceTree = "<group>"; };
@@ -165,7 +167,8 @@
 		25C81D132843C75B0071A49C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				25C81D142843C8800071A49C /* ImageUrlExtension.swift */,
+				25C81D142843C8800071A49C /* ImageExtension.swift */,
+				25794B772851031200B2F72A /* LabelExtension.swift */,
 				250E0E042843E51C00AC939C /* DateService.swift */,
 			);
 			path = Components;
@@ -256,13 +259,14 @@
 				250E0E052843E51C00AC939C /* DateService.swift in Sources */,
 				259A0406284BB70300933D1A /* LaunchListViewModel.swift in Sources */,
 				25B6C394283A751600C8397D /* LaunchListViewController.swift in Sources */,
+				25794B782851031200B2F72A /* LabelExtension.swift in Sources */,
 				25B6C390283A751600C8397D /* AppDelegate.swift in Sources */,
 				25D620AC284D230E0058D972 /* LaunchDetailViewController.swift in Sources */,
 				2599E0272847E4900020B5B4 /* RocketData.swift in Sources */,
 				259ED921283ABCD900B9D742 /* LaunchData.swift in Sources */,
 				25B6C392283A751600C8397D /* SceneDelegate.swift in Sources */,
 				259ED92B283EC82C00B9D742 /* LaunchService.swift in Sources */,
-				25C81D152843C8800071A49C /* ImageUrlExtension.swift in Sources */,
+				25C81D152843C8800071A49C /* ImageExtension.swift in Sources */,
 				25C81D11284386A70071A49C /* LaunchCell.swift in Sources */,
 				259ED925283AC51400B9D742 /* Constants.swift in Sources */,
 			);
