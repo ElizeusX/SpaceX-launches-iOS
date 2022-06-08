@@ -51,7 +51,7 @@
 		25C81D142843C8800071A49C /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		25D620AA284D230E0058D972 /* LaunchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewController.swift; sourceTree = "<group>"; };
 		25D620AB284D230E0058D972 /* LaunchDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchDetailViewController.xib; sourceTree = "<group>"; };
-		25D620AE284D434B0058D972 /* LaunchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchDetailViewModel.swift; path = ../../../../../../Downloads/LaunchDetailViewModel.swift; sourceTree = "<group>"; };
+		25D620AE284D434B0058D972 /* LaunchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
