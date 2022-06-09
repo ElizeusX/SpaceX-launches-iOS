@@ -40,7 +40,7 @@ final class LaunchService {
         // Delete old data when reload list/collection view
         self.rocketData.removeAll()
         // For remove duplicates ids
-        let ids: [String] = Array(Set(launchData.map({ $0.rocket ?? String() })))
+        let ids: [String] = Array(Set(launchData.map({ $0.rocket })))
         var isLoopEnd: Bool {
             ids.count == self.rocketData.count
         }

@@ -8,14 +8,14 @@
 import Foundation
 
 struct LaunchData: Codable {
-    let id: String?
-    let name: String?
+    let id: String
+    let name: String
     let success: Bool?
-    let dateUtc: String?
-    let flightNumber: Int?
+    let dateUtc: String
+    let flightNumber: Int
     let details: String?
-    let rocket: String?
-    let links: Links?
+    let rocket: String
+    let links: Links
 
     enum CodingKeys: String, CodingKey {
         case id

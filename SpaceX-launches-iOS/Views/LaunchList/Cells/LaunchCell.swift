@@ -21,9 +21,9 @@ class LaunchCell: UICollectionViewCell {
     }
 
     func setupCell(launchData: LaunchData, rocketData: RocketData?) {
-        self.imageView.downloaded(from: launchData.links?.patch?.small ?? "")
+        self.imageView.downloaded(from: launchData.links.patch?.small ?? "")
         self.nameLabel.text = launchData.name
-        self.dateLabel.text = DateService.convertStringToDate(from: launchData.dateUtc ?? "")
+        self.dateLabel.text = DateService.convertStringToDate(from: launchData.dateUtc)
         self.rocketLabel.text = rocketData?.name
 
         if let success = launchData.success {
