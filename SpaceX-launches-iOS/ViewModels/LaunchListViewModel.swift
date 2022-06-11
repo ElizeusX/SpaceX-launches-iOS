@@ -10,7 +10,7 @@ import UIKit
 
 final class LaunchListViewModel {
 
-    var service = LaunchService.shared
+    var service = LaunchService()
 
     private var cancellable: Set<AnyCancellable> = []
 
