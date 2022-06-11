@@ -43,7 +43,7 @@ class LaunchCell: UICollectionViewCell {
             size: 15,
             imageColor: .white
         )
-        rocketLabel.text = rocketData?.name
+        rocketLabel.text = rocketData?.name.uppercased()
         imageView.downloaded(from: launchData.links.patch?.small ?? "")
     }
 

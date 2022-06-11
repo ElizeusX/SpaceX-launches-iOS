@@ -63,7 +63,8 @@ extension LaunchListViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width - 70, height: 150)
+        let padding: CGFloat = UIDevice.current.orientation.isLandscape ? 80.0 : 20.0
+        return CGSize(width: UIScreen.main.bounds.width - padding, height: 150)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
