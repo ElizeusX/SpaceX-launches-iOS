@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,10 +17,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="308" height="152"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V6-pS-l1Z">
-                        <rect key="frame" x="10" y="10" width="49" height="21.5"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V6-pS-l1Z">
+                        <rect key="frame" x="10" y="10" width="190" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="190" id="PIt-Fq-rOm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GWA-gt-p1a">
@@ -29,52 +33,64 @@
                             <constraint firstAttribute="height" constant="80" id="oB1-mk-mea"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP2-Iz-wAm">
-                        <rect key="frame" x="208" y="126" width="80" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="80" id="743-4S-M3Z"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2k-aC-xrK">
-                        <rect key="frame" x="10" y="39.5" width="32.5" height="18"/>
+                        <rect key="frame" x="10" y="45" width="32.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOU-Rz-WFh">
-                        <rect key="frame" x="10" y="65.5" width="48" height="18"/>
+                        <rect key="frame" x="10" y="71" width="48" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6q-6T-eaS">
+                        <rect key="frame" x="244" y="8" width="56" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mic-5N-pZw">
+                        <rect key="frame" x="238" y="124" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="dmD-Uq-eiT"/>
+                            <constraint firstAttribute="height" constant="20" id="nnY-H4-z1v"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="0.1919852229" green="0.2142982252" blue="0.2914763105" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" name="DarkNight"/>
             <constraints>
                 <constraint firstItem="GWA-gt-p1a" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1M6-18-2DZ"/>
-                <constraint firstItem="zP2-Iz-wAm" firstAttribute="top" secondItem="GWA-gt-p1a" secondAttribute="bottom" constant="10" id="Bxn-0J-gVt"/>
-                <constraint firstItem="a2k-aC-xrK" firstAttribute="top" secondItem="2V6-pS-l1Z" secondAttribute="bottom" constant="8" id="E5Q-J3-Byu"/>
+                <constraint firstItem="a2k-aC-xrK" firstAttribute="top" secondItem="2V6-pS-l1Z" secondAttribute="bottom" constant="12" id="E5Q-J3-Byu"/>
                 <constraint firstItem="2V6-pS-l1Z" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="JmV-eg-FsY"/>
-                <constraint firstAttribute="trailing" secondItem="zP2-Iz-wAm" secondAttribute="trailing" constant="20" id="VKt-Jd-4bb"/>
                 <constraint firstItem="2V6-pS-l1Z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="YK2-j1-HIZ"/>
                 <constraint firstAttribute="trailing" secondItem="GWA-gt-p1a" secondAttribute="trailing" constant="20" id="ZON-fv-ZfU"/>
                 <constraint firstItem="cOU-Rz-WFh" firstAttribute="top" secondItem="a2k-aC-xrK" secondAttribute="bottom" constant="8" id="aGV-Ex-L5y"/>
                 <constraint firstItem="a2k-aC-xrK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="fhj-ah-wRO"/>
                 <constraint firstItem="cOU-Rz-WFh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="hQW-q7-mwA"/>
+                <constraint firstItem="k6q-6T-eaS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="jOU-g7-JM1"/>
+                <constraint firstAttribute="trailing" secondItem="mic-5N-pZw" secondAttribute="trailing" constant="50" id="uVS-2p-3ay"/>
+                <constraint firstItem="mic-5N-pZw" firstAttribute="top" secondItem="GWA-gt-p1a" secondAttribute="bottom" constant="8" id="vmS-4l-jDf"/>
+                <constraint firstAttribute="trailing" secondItem="k6q-6T-eaS" secondAttribute="trailing" constant="8" id="zPU-PH-Gsk"/>
             </constraints>
             <size key="customSize" width="312" height="152"/>
             <connections>
                 <outlet property="dateLabel" destination="a2k-aC-xrK" id="SVW-g8-MVS"/>
                 <outlet property="imageView" destination="GWA-gt-p1a" id="jAP-F7-Fy3"/>
                 <outlet property="nameLabel" destination="2V6-pS-l1Z" id="AYp-Ww-YaQ"/>
+                <outlet property="numberLabel" destination="k6q-6T-eaS" id="bJh-0j-FFG"/>
                 <outlet property="rocketLabel" destination="cOU-Rz-WFh" id="3c7-qV-AV6"/>
-                <outlet property="successLabel" destination="zP2-Iz-wAm" id="b5H-dR-kRy"/>
+                <outlet property="successIcon" destination="mic-5N-pZw" id="xS1-O7-zBP"/>
             </connections>
             <point key="canvasLocation" x="107" y="61"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="DarkNight">
+            <color red="0.10999999940395355" green="0.10999999940395355" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

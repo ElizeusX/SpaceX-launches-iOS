@@ -13,7 +13,7 @@ extension CALayer {
 
         let border = CALayer()
         border.cornerRadius = cornerRadius
-        border.frame = CGRect(x: -6, y: 0, width: thickness, height: self.frame.height)
+        border.frame = CGRect(x: -7, y: 0, width: thickness, height: self.frame.height)
         border.backgroundColor = color?.cgColor
 
         self.addSublayer(border)
