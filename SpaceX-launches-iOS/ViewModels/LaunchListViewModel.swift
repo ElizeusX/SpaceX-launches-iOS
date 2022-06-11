@@ -57,7 +57,7 @@ final class LaunchListViewModel {
                     collectionView.reloadData()
                 } else {
                     self.launchData = self.service.launchData.filter {
-                        ($0.name!.lowercased().contains(searchText))
+                        ($0.name.lowercased().contains(searchText))
                     }
                     collectionView.reloadData()
                 }
