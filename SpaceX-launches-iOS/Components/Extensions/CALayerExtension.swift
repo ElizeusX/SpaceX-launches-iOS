@@ -9,7 +9,7 @@ import UIKit
 
 extension CALayer {
 
-    func leftLineForHeader(color: UIColor? = UIColor(named: Constants.Colors.paleOrange), thickness: CGFloat = 4, cornerRadius: CGFloat = 2) {
+    func leftLineForHeader(color: UIColor? = UIColor(named: Constants.Colors.paleOrange), thickness: CGFloat = 3, cornerRadius: CGFloat = 2) {
 
         let border = CALayer()
         border.cornerRadius = cornerRadius

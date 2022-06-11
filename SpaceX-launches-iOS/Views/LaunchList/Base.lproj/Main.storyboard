@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,8 +32,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wWY-Bj-S4t">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WWi-zI-Yxx">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -45,11 +44,11 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wWY-Bj-S4t" secondAttribute="bottom" id="P7S-Kd-QGh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wWY-Bj-S4t" secondAttribute="trailing" id="cmK-0F-lmr"/>
-                            <constraint firstItem="wWY-Bj-S4t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="coZ-TT-fLq"/>
+                            <constraint firstAttribute="bottom" secondItem="wWY-Bj-S4t" secondAttribute="bottom" id="Fs1-t0-tlr"/>
+                            <constraint firstAttribute="trailing" secondItem="wWY-Bj-S4t" secondAttribute="trailing" id="IGk-Gy-EJ6"/>
+                            <constraint firstItem="wWY-Bj-S4t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ONk-NP-m83"/>
                             <constraint firstItem="wWY-Bj-S4t" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dJd-R3-8pD"/>
                         </constraints>
                     </view>
@@ -63,9 +62,4 @@
             <point key="canvasLocation" x="-528.98550724637687" y="-61.607142857142854"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
