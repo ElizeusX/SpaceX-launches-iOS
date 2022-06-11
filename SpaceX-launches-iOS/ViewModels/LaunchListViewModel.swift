@@ -14,7 +14,9 @@ final class LaunchListViewModel {
 
     private var cancellable: Set<AnyCancellable> = []
 
-    @Published var launchData: [LaunchData] = []
+     var launchData: [LaunchData] = []
+     var rocketData: [RocketData] = []
+
     @Published var error: String = ""
     @Published var isDataLoaded: Bool = false
     @Published var searchText: String = ""
@@ -24,14 +26,17 @@ final class LaunchListViewModel {
     }
 
     func fetchData(collectionView: UICollectionView) {
-        service.fetchLaunchData { [self] success in
-            if success {
-                launchData = service.launchData
-                isDataLoaded = true
+        service.fetchLaunchData { [self] result in
+            switch result {
+            case .success((let launchData, let rocketData)):
+                self.launchData = launchData
+                self.rocketData = rocketData
                 collectionView.reloadData()
-            } else {
-                // TODO: Display error for user
-                error = "Something went wrong, unable to fetch data. Please, check internet connection and reload the app"
+            case .failure(let error):
+                switch error {
+                case let .error(message: message):
+                    self.error = message
+                }
             }
         }
     }
@@ -42,7 +47,7 @@ final class LaunchListViewModel {
 
     // Set rocket for current launch
     func cellCurrentRocket(launch: LaunchData) -> RocketData? {
-        return service.rocketData.filter { $0.id == launch.rocket }.first
+        return self.rocketData.filter { $0.id == launch.rocket }.first
     }
 
     func setupSearchTextObserver(collectionView: UICollectionView) {
