@@ -19,6 +19,7 @@ class LaunchDetailViewController: UIViewController {
             imageView.downloaded(from: viewModel.launchData?.links.patch?.small ?? "")
         }
     }
+    @IBOutlet weak var rocketHeaderLabel: UILabel!
     @IBOutlet weak var rocketNameLabel: UILabel!
     @IBOutlet weak var rocketHeightLabel: UILabel!
     @IBOutlet weak var rocketMassLabel: UILabel!
@@ -44,6 +45,8 @@ class LaunchDetailViewController: UIViewController {
         guard let launchData = viewModel.launchData else { return }
 
         nameLabel.text = launchData.name
+        nameLabel.layer.leftLineForHeader()
+
         numberLabel.text = "#\(launchData.flightNumber)"
         successLabel.addLeading(
             image: UIImage(systemName: viewModel.successIcon()) ?? UIImage(),
@@ -64,6 +67,8 @@ class LaunchDetailViewController: UIViewController {
 
     func setupRocketLabels() {
         guard let rocketData = viewModel.rocketData else { return }
+        rocketHeaderLabel.text = "Rocket"
+        rocketHeaderLabel.layer.leftLineForHeader()
 
         rocketNameLabel.text = rocketData.name
         rocketHeightLabel.addLeading(
