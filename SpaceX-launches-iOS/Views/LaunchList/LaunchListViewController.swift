@@ -6,21 +6,19 @@
 //
 
 import UIKit
-import Combine
 
 class LaunchListViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
     private var viewModel = LaunchListViewModel()
-    private var cancellable: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchData()
-
-        reloadCollectionView()
+        viewModel.fetchData(collectionView: collectionView)
+        viewModel.setupSearchTextObserver(collectionView: collectionView)
         registerCollectionView()
+        setupSearchBar()
     }
 
     func registerCollectionView() {
@@ -32,12 +30,11 @@ class LaunchListViewController: UIViewController {
         self.collectionView.delegate = self
     }
 
-    func reloadCollectionView(){
-        viewModel.$isDataLoaded.sink { [weak self] success in
-            if success {
-                self?.collectionView.reloadData()
-            }
-        }.store(in: &cancellable)
+    private func setupSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
     }
 
     func segueToLaunchDetailView(launchData: LaunchData, rocketData: RocketData?) {
@@ -48,6 +45,7 @@ class LaunchListViewController: UIViewController {
         present(launchDetailVC, animated: true, completion: nil)
     }
 }
+//MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension LaunchListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
@@ -76,6 +74,15 @@ extension LaunchListViewController: UICollectionViewDataSource, UICollectionView
         let launch = viewModel.cellLaunchItem(for: indexPath.item)
         let rocket = viewModel.cellCurrentRocket(launch: launch)
         segueToLaunchDetailView(launchData: launch, rocketData: rocket)
+    }
+}
+
+//MARK: - UISearchResultsUpdating
+
+extension LaunchListViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.searchText = searchController.searchBar.text ?? ""
     }
 }
 
