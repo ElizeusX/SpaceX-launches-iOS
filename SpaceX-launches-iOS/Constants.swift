@@ -28,6 +28,10 @@ struct Constants{
         static let info = "info.circle"
         static let questionmark = "questionmark.circle"
         static let xmark = "xmark"
+    }
 
+    struct Colors {
+        static let paleOrange = "PaleOrange"
+        static let dirtyWhite = "DirtyWhite"
     }
 }
