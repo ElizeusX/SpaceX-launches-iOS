@@ -23,7 +23,7 @@ struct Constants{
         static let fail = "x.circle"
         static let calendar = "calendar"
         static let mass = "scalemass"
-        static let orderOfPriority = "arrow.up.arrow.down"
+        static let check = "checkmark"
         static let height = "arrow.up.and.down"
         static let info = "info.circle"
         static let questionmark = "questionmark.circle"
