@@ -68,4 +68,51 @@ final class LaunchListViewModel {
                 }
             }.store(in: &cancellable)
     }
+
+    func sortedLaunchData(sortBy: SortBy) {
+        switch sortBy {
+        case .firstDate:
+            sortByDate(fromFirst: true)
+        case .lastDate:
+            sortByDate(fromFirst: false)
+        case .success:
+            sortBySuccess(fromSuccess: true)
+        case .fail:
+            sortBySuccess(fromSuccess: false)
+        case .name:
+            sortByName()
+        }
+    }
+
+    // MARK: - Private
+
+    private func sortByDate(fromFirst: Bool) {
+        if fromFirst {
+             launchData.sort { $0.dateUtc < $1.dateUtc }
+        } else {
+             launchData.sort { $0.dateUtc > $1.dateUtc }
+        }
+    }
+
+    private func sortBySuccess(fromSuccess: Bool) {
+        if fromSuccess {
+             launchData.sort { ($0.success ?? false) && !($1.success ?? true) }
+        } else {
+             launchData.sort { !($0.success ?? true) && ($1.success ?? false) }
+        }
+    }
+
+    private func sortByName() {
+         launchData.sort { $0.name < $1.name }
+    }
+}
+
+// MARK: - Enum
+
+enum SortBy {
+    case firstDate
+    case lastDate
+    case success
+    case fail
+    case name
 }
