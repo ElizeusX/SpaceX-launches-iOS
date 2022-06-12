@@ -3,6 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-1343" y="-62"/>
         </scene>
-        <!--Launch List View Controller-->
+        <!--SpaceX Launches-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="LaunchListViewController" id="BYZ-38-t0r" customClass="LaunchListViewController" customModule="SpaceX_launches_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,7 +54,16 @@
                             <constraint firstItem="wWY-Bj-S4t" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dJd-R3-8pD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="me4-QJ-JS2"/>
+                    <navigationItem key="navigationItem" title="SpaceX Launches" id="me4-QJ-JS2">
+                        <barButtonItem key="rightBarButtonItem" id="aKz-ny-BwH">
+                            <imageReference key="image" image="arrow.up.arrow.down" catalog="system" symbolScale="large"/>
+                            <imageReference key="landscapeImage" image="arrow.up.arrow.down" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" name="PaleOrange"/>
+                            <connections>
+                                <action selector="sortButtonAction:" destination="BYZ-38-t0r" id="knD-QZ-Yun"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="wWY-Bj-S4t" id="Ytd-6X-Gak"/>
                     </connections>
@@ -62,4 +73,10 @@
             <point key="canvasLocation" x="-528.98550724637687" y="-61.607142857142854"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
+        <namedColor name="PaleOrange">
+            <color red="0.78431372549019607" green="0.29411764705882354" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

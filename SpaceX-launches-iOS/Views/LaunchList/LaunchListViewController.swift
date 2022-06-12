@@ -21,6 +21,45 @@ class LaunchListViewController: UIViewController {
         setupSearchBar()
     }
 
+    @IBAction private func sortButtonAction(_ sender: UIBarButtonItem) {
+        // TODO: Sort
+        let arrayAction = [
+            UIAlertAction(title: "First date", style: .default) { _ in
+                self.viewModel.sortedLaunchData(sortBy: SortBy.firstDate)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Last date", style: .default) { _ in
+                self.viewModel.sortedLaunchData(sortBy: SortBy.lastDate)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Success", style: .default) { _ in
+                self.viewModel.sortedLaunchData(sortBy: SortBy.success)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Fail", style: .default) { _ in
+                self.viewModel.sortedLaunchData(sortBy: SortBy.fail)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Name", style: .default) { _ in
+                self.viewModel.sortedLaunchData(sortBy: SortBy.name)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Cancel", style: .cancel)
+        ]
+
+        let alert = UIAlertController(title: "Sort launches by",
+                                      message: "",
+                                      preferredStyle: .actionSheet)
+
+//        let icon = UIImage(systemName: Constants.Icons.check)
+//        sortByFirstDate.setValue(icon, forKey: "image")
+        for action in arrayAction {
+            alert.addAction(action)
+        }
+
+        self.present(alert, animated: true)
+    }
+
     func registerCollectionView() {
         self.collectionView.register(
             UINib(nibName: "LaunchCell", bundle: nil),
