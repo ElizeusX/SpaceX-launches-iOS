@@ -49,30 +49,7 @@ class LaunchListViewController: UIViewController {
         present(launchDetailVC, animated: true, completion: nil)
     }
 
-    func presentActionSheet() {
-        // TODO: Sort
-//        let dictionary = [
-//            SortBy.firstDate: "First date",
-//            SortBy.lastDate: "Last date",
-//            SortBy.success: "Success",
-//            SortBy.fail: "Fail",
-//            SortBy.name: "Name"
-//        ]
-//
-//        let dictionaryWithIndex = dictionary.enumerated()
-//        var alertActions: [Int:UIAlertAction] = [:]
-//
-//        for (index, action) in dictionaryWithIndex {
-//            alertActions[index] = UIAlertAction(title: action.value, style: .default) { _ in
-//                self.viewModel.sortedLaunchData(sortBy: action.key)
-//                UserDefaultsProvider.set(key: .sort, value: action.key.rawValue)
-//                self.collectionView.reloadData()
-//            }
-//
-//            self.viewModel.showCurrentChoiceSort(action: action.key, alertAction: alertActions[index])
-//        }
-//        arrayTest.append(UIAlertAction(title: "Cancel", style: .cancel))
-
+    private func presentActionSheet() {
         let sortAlerActions = [
             UIAlertAction(title: "First date", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.firstDate.rawValue)

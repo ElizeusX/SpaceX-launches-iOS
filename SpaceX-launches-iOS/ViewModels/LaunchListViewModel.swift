@@ -85,13 +85,6 @@ final class LaunchListViewModel {
         }
     }
 
-//    func showCurrentChoiceSort(action: SortBy, alertAction: UIAlertAction?) {
-//        if action.rawValue == UserDefaultsProvider.string(key: .sort) {
-//            let icon = UIImage(systemName: Constants.Icons.check)
-//            alertAction?.setValue(icon, forKey: "image")
-//        }
-//    }
-
     func loadSortedLaunchData() {
         let sortByRawValue = UserDefaultsProvider.string(key: .sort) ?? SortBy.lastDate.rawValue
         let sortBy = SortBy(rawValue: sortByRawValue) ?? SortBy.lastDate
