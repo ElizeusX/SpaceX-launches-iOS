@@ -31,6 +31,7 @@ final class LaunchListViewModel {
             case .success((let launchData, let rocketData)):
                 self.launchData = launchData
                 self.rocketData = rocketData
+                self.loadSortedLaunchData()
                 collectionView.reloadData()
             case .failure(let error):
                 switch error {
@@ -84,6 +85,19 @@ final class LaunchListViewModel {
         }
     }
 
+//    func showCurrentChoiceSort(action: SortBy, alertAction: UIAlertAction?) {
+//        if action.rawValue == UserDefaultsProvider.string(key: .sort) {
+//            let icon = UIImage(systemName: Constants.Icons.check)
+//            alertAction?.setValue(icon, forKey: "image")
+//        }
+//    }
+
+    func loadSortedLaunchData() {
+        let sortByRawValue = UserDefaultsProvider.string(key: .sort) ?? SortBy.lastDate.rawValue
+        let sortBy = SortBy(rawValue: sortByRawValue) ?? SortBy.lastDate
+        sortedLaunchData(sortBy: sortBy)
+    }
+
     // MARK: - Private
 
     private func sortByDate(fromFirst: Bool) {
@@ -95,6 +109,7 @@ final class LaunchListViewModel {
     }
 
     private func sortBySuccess(fromSuccess: Bool) {
+        sortByDate(fromFirst: false) // For sort by last date and success or fail launches
         if fromSuccess {
              launchData.sort { ($0.success ?? false) && !($1.success ?? true) }
         } else {
@@ -109,10 +124,10 @@ final class LaunchListViewModel {
 
 // MARK: - Enum
 
-enum SortBy {
-    case firstDate
-    case lastDate
-    case success
-    case fail
-    case name
+enum SortBy: String {
+    case firstDate = "firstDate"
+    case lastDate = "lastDate"
+    case success = "success"
+    case fail = "fail"
+    case name = "name"
 }

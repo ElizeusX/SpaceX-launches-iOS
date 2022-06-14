@@ -22,42 +22,7 @@ class LaunchListViewController: UIViewController {
     }
 
     @IBAction private func sortButtonAction(_ sender: UIBarButtonItem) {
-        // TODO: Sort
-        let arrayAction = [
-            UIAlertAction(title: "First date", style: .default) { _ in
-                self.viewModel.sortedLaunchData(sortBy: SortBy.firstDate)
-                self.collectionView.reloadData()
-            },
-            UIAlertAction(title: "Last date", style: .default) { _ in
-                self.viewModel.sortedLaunchData(sortBy: SortBy.lastDate)
-                self.collectionView.reloadData()
-            },
-            UIAlertAction(title: "Success", style: .default) { _ in
-                self.viewModel.sortedLaunchData(sortBy: SortBy.success)
-                self.collectionView.reloadData()
-            },
-            UIAlertAction(title: "Fail", style: .default) { _ in
-                self.viewModel.sortedLaunchData(sortBy: SortBy.fail)
-                self.collectionView.reloadData()
-            },
-            UIAlertAction(title: "Name", style: .default) { _ in
-                self.viewModel.sortedLaunchData(sortBy: SortBy.name)
-                self.collectionView.reloadData()
-            },
-            UIAlertAction(title: "Cancel", style: .cancel)
-        ]
-
-        let alert = UIAlertController(title: "Sort launches by",
-                                      message: "",
-                                      preferredStyle: .actionSheet)
-
-//        let icon = UIImage(systemName: Constants.Icons.check)
-//        sortByFirstDate.setValue(icon, forKey: "image")
-        for action in arrayAction {
-            alert.addAction(action)
-        }
-
-        self.present(alert, animated: true)
+        self.presentActionSheet()
     }
 
     func registerCollectionView() {
@@ -82,6 +47,71 @@ class LaunchListViewController: UIViewController {
         launchDetailVC.viewModel.rocketData = rocketData
 
         present(launchDetailVC, animated: true, completion: nil)
+    }
+
+    func presentActionSheet() {
+        // TODO: Sort
+//        let dictionary = [
+//            SortBy.firstDate: "First date",
+//            SortBy.lastDate: "Last date",
+//            SortBy.success: "Success",
+//            SortBy.fail: "Fail",
+//            SortBy.name: "Name"
+//        ]
+//
+//        let dictionaryWithIndex = dictionary.enumerated()
+//        var alertActions: [Int:UIAlertAction] = [:]
+//
+//        for (index, action) in dictionaryWithIndex {
+//            alertActions[index] = UIAlertAction(title: action.value, style: .default) { _ in
+//                self.viewModel.sortedLaunchData(sortBy: action.key)
+//                UserDefaultsProvider.set(key: .sort, value: action.key.rawValue)
+//                self.collectionView.reloadData()
+//            }
+//
+//            self.viewModel.showCurrentChoiceSort(action: action.key, alertAction: alertActions[index])
+//        }
+//        arrayTest.append(UIAlertAction(title: "Cancel", style: .cancel))
+
+        let sortAlerActions = [
+            UIAlertAction(title: "First date", style: .default) { _ in
+                UserDefaultsProvider.set(key: .sort, value: SortBy.firstDate.rawValue)
+                self.viewModel.sortedLaunchData(sortBy: SortBy.firstDate)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Last date", style: .default) { _ in
+                UserDefaultsProvider.set(key: .sort, value: SortBy.lastDate.rawValue)
+                self.viewModel.sortedLaunchData(sortBy: SortBy.lastDate)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Success", style: .default) { _ in
+                UserDefaultsProvider.set(key: .sort, value: SortBy.success.rawValue)
+                self.viewModel.sortedLaunchData(sortBy: SortBy.success)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Fail", style: .default) { _ in
+                UserDefaultsProvider.set(key: .sort, value: SortBy.fail.rawValue)
+                self.viewModel.sortedLaunchData(sortBy: SortBy.fail)
+                self.collectionView.reloadData()
+            },
+            UIAlertAction(title: "Name", style: .default) { _ in
+                UserDefaultsProvider.set(key: .sort, value: SortBy.name.rawValue)
+                self.viewModel.sortedLaunchData(sortBy: SortBy.name)
+                self.collectionView.reloadData()
+            }
+        ]
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let alert = UIAlertController(title: "Sort launches by",
+                                      message: "",
+                                      preferredStyle: .actionSheet)
+
+        alert.addAction(cancel)
+
+        for action in sortAlerActions {
+            alert.addAction(action)
+        }
+
+        self.present(alert, animated: true)
     }
 }
 //MARK: - UITableViewDataSource, UITableViewDelegate
