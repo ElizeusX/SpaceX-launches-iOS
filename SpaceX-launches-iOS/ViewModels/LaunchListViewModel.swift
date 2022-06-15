@@ -68,7 +68,7 @@ final class LaunchListViewModel {
                     self.sortLaunchData()
                 } else {
                     self.launchData = self.service.launchData.filter {
-                        ($0.name.lowercased().contains(searchText))
+                        $0.name.lowercased().contains(searchText)
                     }
                 }
             }.store(in: &cancellable)
