@@ -6,19 +6,22 @@
 //
 
 import UIKit
+import Combine
 
 class LaunchListViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
     private var viewModel = LaunchListViewModel()
+    private var cancellables: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchData(collectionView: collectionView)
-        viewModel.setupSearchTextObserver(collectionView: collectionView)
-        registerCollectionView()
+        viewModel.fetchData()
+        viewModel.setupSearchTextObserver()
         setupSearchBar()
+        registerCollectionView()
+        reloadCollectionView()
     }
 
     @IBAction private func sortButtonAction(_ sender: UIBarButtonItem) {
@@ -32,6 +35,12 @@ class LaunchListViewController: UIViewController {
         )
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+    }
+
+    private func reloadCollectionView() {
+        viewModel.$launchData.sink { _ in
+            self.collectionView.reloadData()
+        }.store(in: &cancellables)
     }
 
     private func setupSearchBar() {
@@ -54,27 +63,22 @@ class LaunchListViewController: UIViewController {
             UIAlertAction(title: "First date", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.firstDate.rawValue)
                 self.viewModel.sortForLaunchData(sortBy: SortBy.firstDate)
-                self.collectionView.reloadData()
             },
             UIAlertAction(title: "Last date", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.lastDate.rawValue)
                 self.viewModel.sortForLaunchData(sortBy: SortBy.lastDate)
-                self.collectionView.reloadData()
             },
             UIAlertAction(title: "Success", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.success.rawValue)
                 self.viewModel.sortForLaunchData(sortBy: SortBy.success)
-                self.collectionView.reloadData()
             },
             UIAlertAction(title: "Fail", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.fail.rawValue)
                 self.viewModel.sortForLaunchData(sortBy: SortBy.fail)
-                self.collectionView.reloadData()
             },
             UIAlertAction(title: "Name", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.name.rawValue)
                 self.viewModel.sortForLaunchData(sortBy: SortBy.name)
-                self.collectionView.reloadData()
             }
         ]
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)

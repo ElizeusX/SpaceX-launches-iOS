@@ -14,7 +14,7 @@ final class LaunchListViewModel {
 
     private var cancellable: Set<AnyCancellable> = []
 
-     var launchData: [LaunchData] = []
+    @Published var launchData: [LaunchData] = []
      var rocketData: [RocketData] = []
 
     @Published var error: String = ""
@@ -25,14 +25,13 @@ final class LaunchListViewModel {
         launchData.count
     }
 
-    func fetchData(collectionView: UICollectionView) {
+    func fetchData() {
         service.fetchLaunchData { [self] result in
             switch result {
             case .success((let launchData, let rocketData)):
                 self.launchData = launchData
                 self.rocketData = rocketData
                 self.sortLaunchData()
-                collectionView.reloadData()
             case .failure(let error):
                 switch error {
                 case let .error(message: message):
@@ -51,7 +50,7 @@ final class LaunchListViewModel {
         return self.rocketData.filter { $0.id == launch.rocket }.first
     }
 
-    func setupSearchTextObserver(collectionView: UICollectionView) {
+    func setupSearchTextObserver() {
          $searchText
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .map { $0.lowercased() }
@@ -61,12 +60,10 @@ final class LaunchListViewModel {
                 if searchText.isEmpty {
                     self.launchData = self.service.launchData
                     self.sortLaunchData()
-                    collectionView.reloadData()
                 } else {
                     self.launchData = self.service.launchData.filter {
                         ($0.name.lowercased().contains(searchText))
                     }
-                    collectionView.reloadData()
                 }
             }.store(in: &cancellable)
     }
