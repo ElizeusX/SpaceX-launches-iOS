@@ -10,7 +10,7 @@ import Combine
 
 class LaunchListViewController: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak private var collectionView: UICollectionView!
 
     private var viewModel = LaunchListViewModel()
     private var cancellables: Set<AnyCancellable> = []
@@ -20,7 +20,7 @@ class LaunchListViewController: UIViewController {
         viewModel.fetchData()
         viewModel.setupSearchTextObserver()
         setupSearchBar()
-        registerCollectionView()
+        setupCollectionView()
         reloadCollectionView()
     }
 
@@ -28,7 +28,7 @@ class LaunchListViewController: UIViewController {
         self.presentActionSheet()
     }
 
-    func registerCollectionView() {
+    private func setupCollectionView() {
         self.collectionView.register(
             UINib(nibName: "LaunchCell", bundle: nil),
             forCellWithReuseIdentifier: "launchCell"
@@ -50,7 +50,7 @@ class LaunchListViewController: UIViewController {
         navigationItem.searchController = searchController
     }
 
-    func segueToLaunchDetailView(launchData: LaunchData, rocketData: RocketData?) {
+    private func segueToLaunchDetailView(launchData: LaunchData, rocketData: RocketData?) {
         let launchDetailVC = LaunchDetailViewController(nibName: "LaunchDetailViewController", bundle: nil)
         launchDetailVC.viewModel.launchData = launchData
         launchDetailVC.viewModel.rocketData = rocketData

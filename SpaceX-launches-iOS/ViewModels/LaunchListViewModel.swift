@@ -8,19 +8,25 @@
 import Combine
 import UIKit
 
+enum SortBy: String {
+    case firstDate = "firstDate"
+    case lastDate = "lastDate"
+    case success = "success"
+    case fail = "fail"
+    case name = "name"
+}
+
 final class LaunchListViewModel {
 
     var service = LaunchService()
 
     private var cancellable: Set<AnyCancellable> = []
 
-    @Published var launchData: [LaunchData] = []
-     var rocketData: [RocketData] = []
-
     @Published var error: String = ""
     @Published var isDataLoaded: Bool = false
     @Published var searchText: String = ""
-
+    @Published var launchData: [LaunchData] = []
+    var rocketData: [RocketData] = []
     var launchCount: Int? {
         launchData.count
     }
@@ -51,7 +57,7 @@ final class LaunchListViewModel {
     }
 
     func setupSearchTextObserver() {
-         $searchText
+        $searchText
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .map { $0.lowercased() }
             .sink { [weak self] (searchText) in
@@ -93,32 +99,22 @@ final class LaunchListViewModel {
 
     private func sortByDate(fromFirst: Bool) {
         if fromFirst {
-             launchData.sort { $0.dateUtc < $1.dateUtc }
+            launchData.sort { $0.dateUtc < $1.dateUtc }
         } else {
-             launchData.sort { $0.dateUtc > $1.dateUtc }
+            launchData.sort { $0.dateUtc > $1.dateUtc }
         }
     }
 
     private func sortBySuccess(fromSuccess: Bool) {
         sortByDate(fromFirst: false) // For sort by last date and success or fail launches
         if fromSuccess {
-             launchData.sort { ($0.success ?? false) && !($1.success ?? true) }
+            launchData.sort { ($0.success ?? false) && !($1.success ?? true) }
         } else {
-             launchData.sort { !($0.success ?? true) && ($1.success ?? false) }
+            launchData.sort { !($0.success ?? true) && ($1.success ?? false) }
         }
     }
 
     private func sortByName() {
-         launchData.sort { $0.name < $1.name }
+        launchData.sort { $0.name < $1.name }
     }
-}
-
-// MARK: - Enum
-
-enum SortBy: String {
-    case firstDate = "firstDate"
-    case lastDate = "lastDate"
-    case success = "success"
-    case fail = "fail"
-    case name = "name"
 }
