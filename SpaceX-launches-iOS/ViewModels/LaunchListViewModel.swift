@@ -31,7 +31,7 @@ final class LaunchListViewModel {
             case .success((let launchData, let rocketData)):
                 self.launchData = launchData
                 self.rocketData = rocketData
-                self.loadSortedLaunchData()
+                self.sortLaunchData()
                 collectionView.reloadData()
             case .failure(let error):
                 switch error {
@@ -60,6 +60,7 @@ final class LaunchListViewModel {
 
                 if searchText.isEmpty {
                     self.launchData = self.service.launchData
+                    self.sortLaunchData()
                     collectionView.reloadData()
                 } else {
                     self.launchData = self.service.launchData.filter {
@@ -70,7 +71,7 @@ final class LaunchListViewModel {
             }.store(in: &cancellable)
     }
 
-    func sortedLaunchData(sortBy: SortBy) {
+    func sortForLaunchData(sortBy: SortBy) {
         switch sortBy {
         case .firstDate:
             sortByDate(fromFirst: true)
@@ -85,10 +86,10 @@ final class LaunchListViewModel {
         }
     }
 
-    func loadSortedLaunchData() {
+    func sortLaunchData() {
         let sortByRawValue = UserDefaultsProvider.string(key: .sort) ?? SortBy.lastDate.rawValue
         let sortBy = SortBy(rawValue: sortByRawValue) ?? SortBy.lastDate
-        sortedLaunchData(sortBy: sortBy)
+        sortForLaunchData(sortBy: sortBy)
     }
 
     // MARK: - Private

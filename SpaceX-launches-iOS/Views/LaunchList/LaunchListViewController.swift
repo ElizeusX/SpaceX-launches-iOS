@@ -53,27 +53,27 @@ class LaunchListViewController: UIViewController {
         let sortAlerActions = [
             UIAlertAction(title: "First date", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.firstDate.rawValue)
-                self.viewModel.sortedLaunchData(sortBy: SortBy.firstDate)
+                self.viewModel.sortForLaunchData(sortBy: SortBy.firstDate)
                 self.collectionView.reloadData()
             },
             UIAlertAction(title: "Last date", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.lastDate.rawValue)
-                self.viewModel.sortedLaunchData(sortBy: SortBy.lastDate)
+                self.viewModel.sortForLaunchData(sortBy: SortBy.lastDate)
                 self.collectionView.reloadData()
             },
             UIAlertAction(title: "Success", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.success.rawValue)
-                self.viewModel.sortedLaunchData(sortBy: SortBy.success)
+                self.viewModel.sortForLaunchData(sortBy: SortBy.success)
                 self.collectionView.reloadData()
             },
             UIAlertAction(title: "Fail", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.fail.rawValue)
-                self.viewModel.sortedLaunchData(sortBy: SortBy.fail)
+                self.viewModel.sortForLaunchData(sortBy: SortBy.fail)
                 self.collectionView.reloadData()
             },
             UIAlertAction(title: "Name", style: .default) { _ in
                 UserDefaultsProvider.set(key: .sort, value: SortBy.name.rawValue)
-                self.viewModel.sortedLaunchData(sortBy: SortBy.name)
+                self.viewModel.sortForLaunchData(sortBy: SortBy.name)
                 self.collectionView.reloadData()
             }
         ]

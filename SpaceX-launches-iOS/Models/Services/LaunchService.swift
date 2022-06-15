@@ -26,7 +26,7 @@ final class LaunchService {
             }
             do {
                 self.launchData = try JSONDecoder().decode([LaunchData].self, from: jsonData)
-                self.fetchRocketData { result in
+                self.fetchRocketData { [self] result in
                     switch result {
                     case .success(let rocketData):
                         completion(.success((self.launchData, rocketData)))
