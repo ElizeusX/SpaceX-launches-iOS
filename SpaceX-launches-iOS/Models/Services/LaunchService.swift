@@ -21,7 +21,7 @@ final class LaunchService {
                    method: .get,
                    headers: Constants.headers).response { response in
             guard let jsonData = response.data else {
-                completion(.failure(NetworkError.error(message: "No data")))
+                completion(.failure(NetworkError.error(message: Constants.ErrorMessages.dataIsNil)))
                 return
             }
             do {
@@ -49,7 +49,7 @@ final class LaunchService {
                    method: .get,
                    headers: Constants.headers).response { response in
             guard let jsonData = response.data else {
-                completion(.failure(NetworkError.error(message: "No data")))
+                completion(.failure(NetworkError.error(message: Constants.ErrorMessages.dataIsNil)))
                 return
             }
             do {

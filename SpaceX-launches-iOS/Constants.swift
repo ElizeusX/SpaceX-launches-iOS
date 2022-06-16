@@ -34,4 +34,8 @@ struct Constants{
         static let paleOrange = "PaleOrange"
         static let dirtyWhite = "DirtyWhite"
     }
+
+    struct ErrorMessages {
+        static let dataIsNil = "Something went wrong, data is empty. Please, check internet connection and reload the app"
+    }
 }

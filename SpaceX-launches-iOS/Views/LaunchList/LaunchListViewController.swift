@@ -22,6 +22,7 @@ class LaunchListViewController: UIViewController {
         setupSearchBar()
         setupCollectionView()
         reloadCollectionView()
+        showError()
     }
 
     @IBAction private func sortButtonAction(_ sender: UIBarButtonItem) {
@@ -86,6 +87,22 @@ class LaunchListViewController: UIViewController {
         for action in sortAlerActions {
             alert.addAction(action)
         }
+
+        self.present(alert, animated: true)
+    }
+
+    private func showError() {
+        self.viewModel.$error.sink { error in
+            if !error.isEmpty {
+                self.errorAlert(message: error)
+            }
+        }.store(in: &cancellables)
+    }
+
+    private func errorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(action)
 
         self.present(alert, animated: true)
     }
