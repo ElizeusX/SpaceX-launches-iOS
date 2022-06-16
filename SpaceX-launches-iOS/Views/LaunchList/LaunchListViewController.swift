@@ -39,8 +39,10 @@ class LaunchListViewController: UIViewController {
     }
 
     private func reloadCollectionView() {
-        viewModel.$launchData.sink { _ in
-            self.collectionView.reloadData()
+        viewModel.$launchData.sink { data in
+            if !data.isEmpty {
+                self.collectionView.reloadData()
+            }
         }.store(in: &cancellables)
     }
 
