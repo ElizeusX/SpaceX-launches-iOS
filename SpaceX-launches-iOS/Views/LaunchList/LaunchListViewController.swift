@@ -61,24 +61,19 @@ class LaunchListViewController: UIViewController {
     private func presentActionSheet() {
         let sortAlerActions = [
             UIAlertAction(title: "First date", style: .default) { _ in
-                UserDefaultsProvider.set(key: .sort, value: SortBy.firstDate.rawValue)
-                self.viewModel.sortForLaunchData(sortBy: SortBy.firstDate)
+                self.viewModel.loadSortedData(sortBy: SortBy.firstDate)
             },
             UIAlertAction(title: "Last date", style: .default) { _ in
-                UserDefaultsProvider.set(key: .sort, value: SortBy.lastDate.rawValue)
-                self.viewModel.sortForLaunchData(sortBy: SortBy.lastDate)
+                self.viewModel.loadSortedData(sortBy: SortBy.lastDate)
             },
             UIAlertAction(title: "Success", style: .default) { _ in
-                UserDefaultsProvider.set(key: .sort, value: SortBy.success.rawValue)
-                self.viewModel.sortForLaunchData(sortBy: SortBy.success)
+                self.viewModel.loadSortedData(sortBy: SortBy.success)
             },
             UIAlertAction(title: "Fail", style: .default) { _ in
-                UserDefaultsProvider.set(key: .sort, value: SortBy.fail.rawValue)
-                self.viewModel.sortForLaunchData(sortBy: SortBy.fail)
+                self.viewModel.loadSortedData(sortBy: SortBy.fail)
             },
             UIAlertAction(title: "Name", style: .default) { _ in
-                UserDefaultsProvider.set(key: .sort, value: SortBy.name.rawValue)
-                self.viewModel.sortForLaunchData(sortBy: SortBy.name)
+                self.viewModel.loadSortedData(sortBy: SortBy.name)
             }
         ]
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)

@@ -34,10 +34,9 @@ final class LaunchListViewModel {
     func fetchData() {
         service.fetchLaunchData { [self] result in
             switch result {
-            case .success((let launchData, let rocketData)):
-                self.launchData = launchData
-                self.rocketData = rocketData
-                self.sortLaunchData()
+            case .success((let resultLaunchData, let resultRocketData)):
+                self.launchData = self.sortedSourceLaunchData(data: resultLaunchData)
+                self.rocketData = resultRocketData
             case .failure(let error):
                 switch error {
                 case let .error(message: message):
@@ -64,8 +63,7 @@ final class LaunchListViewModel {
                 guard let self = self else { return }
 
                 if searchText.isEmpty {
-                    self.launchData = self.service.launchData
-                    self.sortLaunchData()
+                    self.launchData = self.sortedSourceLaunchData(data: self.service.launchData)
                 } else {
                     self.launchData = self.service.launchData.filter {
                         $0.name.lowercased().contains(searchText)
@@ -74,47 +72,57 @@ final class LaunchListViewModel {
             }.store(in: &cancellable)
     }
 
-    func sortForLaunchData(sortBy: SortBy) {
-        switch sortBy {
-        case .firstDate:
-            sortByDate(fromFirst: true)
-        case .lastDate:
-            sortByDate(fromFirst: false)
-        case .success:
-            sortBySuccess(fromSuccess: true)
-        case .fail:
-            sortBySuccess(fromSuccess: false)
-        case .name:
-            sortByName()
-        }
-    }
-
-    func sortLaunchData() {
-        let sortByRawValue = UserDefaultsProvider.string(key: .sort) ?? SortBy.lastDate.rawValue
-        let sortBy = SortBy(rawValue: sortByRawValue) ?? SortBy.lastDate
-        sortForLaunchData(sortBy: sortBy)
+    func loadSortedData(sortBy: SortBy) {
+        UserDefaultsProvider.set(key: .sort, value: sortBy.rawValue)
+        self.launchData = sortedLaunchData(sortBy: sortBy)
     }
 
     // MARK: - Private
 
-    private func sortByDate(fromFirst: Bool) {
+    private func sortedSourceLaunchData(data: [LaunchData]) -> [LaunchData] {
+        let sortByRawValue = UserDefaultsProvider.string(key: .sort) ?? SortBy.lastDate.rawValue
+        let sortBy = SortBy(rawValue: sortByRawValue) ?? SortBy.lastDate
+
+        return sortedLaunchData(sourceData: data, sortBy: sortBy)
+    }
+
+    private func sortedLaunchData(sourceData: [LaunchData] = [], sortBy: SortBy) -> [LaunchData] {
+        let dataForSort = sourceData.isEmpty ? launchData : sourceData
+
+        switch sortBy {
+        case .firstDate:
+            return sortedByDate(data: dataForSort, fromFirst: true)
+        case .lastDate:
+            return sortedByDate(data: dataForSort, fromFirst: false)
+        case .success:
+            return sortedBySuccess(data: dataForSort, fromSuccess: true)
+        case .fail:
+            return sortedBySuccess(data: dataForSort, fromSuccess: false)
+        case .name:
+            return sortedByName(data: dataForSort)
+        }
+    }
+
+    private func sortedByDate(data: [LaunchData], fromFirst: Bool) -> [LaunchData] {
         if fromFirst {
-            launchData.sort { $0.dateUtc < $1.dateUtc }
+            return data.sorted { $0.dateUtc < $1.dateUtc }
         } else {
-            launchData.sort { $0.dateUtc > $1.dateUtc }
+            return data.sorted { $0.dateUtc > $1.dateUtc }
         }
     }
 
-    private func sortBySuccess(fromSuccess: Bool) {
-        sortByDate(fromFirst: false) // For sort by last date and success or fail launches
+    private func sortedBySuccess(data: [LaunchData], fromSuccess: Bool) -> [LaunchData] {
+        // Sorted by last date for sort by success or fail launches
+        let sortedDataByDate = sortedByDate(data: data, fromFirst: false)
+
         if fromSuccess {
-            launchData.sort { ($0.success ?? false) && !($1.success ?? true) }
+            return sortedDataByDate.sorted { ($0.success ?? false) && !($1.success ?? true) }
         } else {
-            launchData.sort { !($0.success ?? true) && ($1.success ?? false) }
+            return sortedDataByDate.sorted { !($0.success ?? true) && ($1.success ?? false) }
         }
     }
 
-    private func sortByName() {
-        launchData.sort { $0.name < $1.name }
+    private func sortedByName(data: [LaunchData]) -> [LaunchData] {
+        return data.sorted { $0.name < $1.name }
     }
 }
