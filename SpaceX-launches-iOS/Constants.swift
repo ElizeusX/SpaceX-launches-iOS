@@ -36,6 +36,6 @@ struct Constants{
     }
 
     struct ErrorMessages {
-        static let dataIsNil = "Something went wrong, data is empty. Please, check internet connection and reload the app"
+        static let dataIsNil = "Something went wrong, data is empty. Please, check internet connection and pull to refresh data"
     }
 }
