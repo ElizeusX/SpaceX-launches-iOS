@@ -21,6 +21,7 @@ class LaunchListViewController: UIViewController {
         viewModel.setupSearchTextObserver()
         setupSearchBar()
         setupCollectionView()
+        setupRefreshControl()
         reloadCollectionView()
         showError()
     }
@@ -36,6 +37,20 @@ class LaunchListViewController: UIViewController {
         )
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+    }
+
+    private func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull down to refresh...")
+        self.collectionView.refreshControl = refreshControl
+    }
+
+    @objc private func didPullToRefresh() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.viewModel.fetchData()
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
 
     private func reloadCollectionView() {
