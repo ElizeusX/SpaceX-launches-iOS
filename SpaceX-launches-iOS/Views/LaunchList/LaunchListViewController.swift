@@ -11,12 +11,14 @@ import Combine
 class LaunchListViewController: UIViewController {
 
     @IBOutlet weak private var collectionView: UICollectionView!
+    @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
 
     private var viewModel = LaunchListViewModel()
     private var cancellables: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        startSpinner(spin: true)
         viewModel.fetchData()
         viewModel.setupSearchTextObserver()
         setupSearchBar()
@@ -56,6 +58,7 @@ class LaunchListViewController: UIViewController {
     private func reloadCollectionView() {
         viewModel.$launchData.sink { data in
             if !data.isEmpty {
+                self.startSpinner(spin: false)
                 self.collectionView.reloadData()
             }
         }.store(in: &cancellables)
@@ -122,6 +125,18 @@ class LaunchListViewController: UIViewController {
         alert.addAction(action)
 
         self.present(alert, animated: true)
+    }
+
+    private func startSpinner(spin: Bool){
+        DispatchQueue.main.async{
+            self.activityIndicator.isHidden = !spin
+            if (spin){
+                self.activityIndicator.startAnimating()
+            }
+            else{
+                self.activityIndicator.stopAnimating()
+            }
+        }
     }
 }
 //MARK: - UITableViewDataSource, UITableViewDelegate
