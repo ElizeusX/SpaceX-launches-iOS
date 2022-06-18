@@ -17,7 +17,7 @@ final class LaunchService {
     }
 
     func fetchLaunchData(completion: @escaping(Result<([LaunchData], [RocketData]), NetworkError>) -> Void) {
-        AF.request(Constants.URLs.launchesUrl,
+        AF.request(Constants.URLs.pastLaunchesUrl,
                    method: .get,
                    headers: Constants.headers).response { response in
             guard let jsonData = response.data else {
