@@ -17,11 +17,11 @@ enum SortBy: String {
 }
 
 final class LaunchListViewModel {
-
+    
     var service = LaunchService()
-
+    
     private var cancellable: Set<AnyCancellable> = []
-
+    
     @Published var error: String = ""
     @Published var isDataLoaded: Bool = false
     @Published var searchText: String = ""
@@ -30,7 +30,7 @@ final class LaunchListViewModel {
     var launchCount: Int? {
         launchData.count
     }
-
+    
     func fetchData() {
         service.fetchLaunchData { [self] result in
             switch result {
@@ -45,23 +45,23 @@ final class LaunchListViewModel {
             }
         }
     }
-
+    
     func cellLaunchItem(for row: Int) -> LaunchData {
         return launchData[row]
     }
-
+    
     // Set rocket for current launch
     func cellCurrentRocket(launch: LaunchData) -> RocketData? {
         return self.rocketData.filter { $0.id == launch.rocket }.first
     }
-
+    
     func setupSearchTextObserver() {
         $searchText
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .map { $0.lowercased() }
             .sink { [weak self] (searchText) in
                 guard let self = self else { return }
-
+                
                 if searchText.isEmpty {
                     self.launchData = self.sortedSourceLaunchData(data: self.service.launchData)
                 } else {
@@ -71,24 +71,24 @@ final class LaunchListViewModel {
                 }
             }.store(in: &cancellable)
     }
-
+    
     func loadSortedData(sortBy: SortBy) {
         UserDefaultsProvider.set(key: .sort, value: sortBy.rawValue)
         self.launchData = sortedLaunchData(sortBy: sortBy)
     }
-
+    
     // MARK: - Private
-
+    
     private func sortedSourceLaunchData(data: [LaunchData]) -> [LaunchData] {
         let sortByRawValue = UserDefaultsProvider.string(key: .sort) ?? SortBy.lastDate.rawValue
         let sortBy = SortBy(rawValue: sortByRawValue) ?? SortBy.lastDate
-
+        
         return sortedLaunchData(sourceData: data, sortBy: sortBy)
     }
-
+    
     private func sortedLaunchData(sourceData: [LaunchData] = [], sortBy: SortBy) -> [LaunchData] {
         let dataForSort = sourceData.isEmpty ? launchData : sourceData
-
+        
         switch sortBy {
         case .firstDate:
             return sortedByDate(data: dataForSort, fromFirst: true)
@@ -102,7 +102,7 @@ final class LaunchListViewModel {
             return sortedByName(data: dataForSort)
         }
     }
-
+    
     private func sortedByDate(data: [LaunchData], fromFirst: Bool) -> [LaunchData] {
         if fromFirst {
             return data.sorted { $0.dateUtc < $1.dateUtc }
@@ -110,18 +110,18 @@ final class LaunchListViewModel {
             return data.sorted { $0.dateUtc > $1.dateUtc }
         }
     }
-
+    
     private func sortedBySuccess(data: [LaunchData], fromSuccess: Bool) -> [LaunchData] {
         // Sorted by last date for sort by success or fail launches
         let sortedDataByDate = sortedByDate(data: data, fromFirst: false)
-
+        
         if fromSuccess {
             return sortedDataByDate.sorted { ($0.success ?? false) && !($1.success ?? true) }
         } else {
             return sortedDataByDate.sorted { !($0.success ?? true) && ($1.success ?? false) }
         }
     }
-
+    
     private func sortedByName(data: [LaunchData]) -> [LaunchData] {
         return data.sorted { $0.name < $1.name }
     }

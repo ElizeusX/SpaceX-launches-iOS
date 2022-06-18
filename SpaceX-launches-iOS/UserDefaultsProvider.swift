@@ -14,10 +14,10 @@ enum UserDefaultsKey: String {
 final class UserDefaultsProvider {
 
     static func set(key: UserDefaultsKey, value: Any) {
-         let standard = UserDefaults.standard
-         standard.set(value, forKey: key.rawValue)
-         standard.synchronize()
-     }
+        let standard = UserDefaults.standard
+        standard.set(value, forKey: key.rawValue)
+        standard.synchronize()
+    }
 
     static func string(key: UserDefaultsKey) -> String? {
         return UserDefaults.standard.string(forKey: key.rawValue)

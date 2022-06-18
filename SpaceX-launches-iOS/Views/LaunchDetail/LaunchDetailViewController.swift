@@ -9,39 +9,35 @@ import UIKit
 
 class LaunchDetailViewController: UIViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var successLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView! {
-        didSet {
-            imageView.downloaded(from: viewModel.launchData?.links.patch?.small ?? "")
-        }
-    }
-    @IBOutlet weak var rocketHeaderLabel: UILabel!
-    @IBOutlet weak var rocketNameLabel: UILabel!
-    @IBOutlet weak var rocketHeightLabel: UILabel!
-    @IBOutlet weak var rocketMassLabel: UILabel!
-    @IBOutlet weak var rocketDetailLabel: UILabel!
-    @IBOutlet weak var engineNumberLabel: UILabel!
-    @IBOutlet weak var engineType: UILabel!
-    @IBOutlet weak var engineVersion: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var numberLabel: UILabel!
+    @IBOutlet private weak var successLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var detailLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var rocketHeaderLabel: UILabel!
+    @IBOutlet private weak var rocketNameLabel: UILabel!
+    @IBOutlet private weak var rocketHeightLabel: UILabel!
+    @IBOutlet private weak var rocketMassLabel: UILabel!
+    @IBOutlet private weak var rocketDetailLabel: UILabel!
+    @IBOutlet private weak var engineNumberLabel: UILabel!
+    @IBOutlet private weak var engineType: UILabel!
+    @IBOutlet private weak var engineVersion: UILabel!
 
 
     let viewModel = LaunchDetailViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLaunchLabels()
+        setupLaunchLabelsAndImages()
         setupRocketLabels()
     }
 
-    @IBAction func closeButton(_ sender: Any) {
+    @IBAction private func closeButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 
-    func setupLaunchLabels() {
+    private func setupLaunchLabelsAndImages() {
         guard let launchData = viewModel.launchData else { return }
 
         nameLabel.text = launchData.name
@@ -63,9 +59,10 @@ class LaunchDetailViewController: UIViewController {
             text: launchData.details ?? "",
             imageColor: .white
         )
+        imageView.downloaded(from: launchData.links.patch?.small ?? "")
     }
 
-    func setupRocketLabels() {
+    private func setupRocketLabels() {
         guard let rocketData = viewModel.rocketData else { return }
         rocketHeaderLabel.text = "Rocket"
         rocketHeaderLabel.layer.leftLineForHeader()

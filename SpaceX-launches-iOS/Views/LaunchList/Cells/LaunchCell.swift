@@ -9,12 +9,12 @@ import UIKit
 
 class LaunchCell: UICollectionViewCell {
 
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var successIcon: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var rocketLabel: UILabel!
+    @IBOutlet private weak var numberLabel: UILabel!
+    @IBOutlet private weak var successIcon: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var rocketLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,12 +47,12 @@ class LaunchCell: UICollectionViewCell {
         imageView.downloaded(from: launchData.links.patch?.small ?? "")
     }
 
-    func setSuccessColor(launchData: LaunchData) -> UIColor {
+    private func setSuccessColor(launchData: LaunchData) -> UIColor {
         guard let success = launchData.success else { return .gray }
         return success ? .green : .red
     }
 
-    func setSuccessIcon(launchData: LaunchData) -> String {
+    private func setSuccessIcon(launchData: LaunchData) -> String {
         guard let success = launchData.success else { return Constants.Icons.questionmark}
         return success ? Constants.Icons.success : Constants.Icons.fail
     }

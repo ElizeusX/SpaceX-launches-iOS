@@ -30,7 +30,6 @@ struct LaunchData: Codable {
 }
 
 struct Links: Codable {
-    let webcast: String?    // Video
     let patch: Patch?
 }
 
