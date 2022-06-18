@@ -54,11 +54,15 @@ class LaunchDetailViewController: UIViewController {
             text: DateService.convertStringToDate(from: launchData.dateUtc ) ?? "",
             imageColor: .white
         )
-        detailLabel.addLeading(
-            image: UIImage(systemName: Constants.Icons.info) ?? UIImage(),
-            text: launchData.details ?? "",
-            imageColor: .white
-        )
+        if let detail = launchData.details {
+            detailLabel.addLeading(
+                image: UIImage(systemName: Constants.Icons.info) ?? UIImage(),
+                text: detail,
+                imageColor: .white
+            )
+        } else {
+            detailLabel.isHidden = true
+        }
         imageView.downloaded(from: launchData.links.patch?.small ?? "")
     }
 
@@ -76,10 +80,14 @@ class LaunchDetailViewController: UIViewController {
             image: UIImage(systemName: Constants.Icons.mass) ?? UIImage(),
             text: "\(rocketData.mass.kg) Kg",
             imageColor: .white)
-        rocketDetailLabel.addLeading(
-            image: UIImage(systemName: Constants.Icons.info) ?? UIImage(),
-            text: rocketData.description ?? "",
-            imageColor: .white)
+        if let detail = rocketData.description {
+            rocketDetailLabel.addLeading(
+                image: UIImage(systemName: Constants.Icons.info) ?? UIImage(),
+                text: detail,
+                imageColor: .white)
+        } else {
+            rocketDetailLabel.isHidden = true
+        }
         engineNumberLabel.text = "#\(rocketData.engines.number)"
         engineType.text = rocketData.engines.type
         engineVersion.text = rocketData.engines.version
