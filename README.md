@@ -14,3 +14,5 @@ Simple iOS app, displays information about all past SpaceX launches from [API](h
 
 ## Things that could be improved
 - Add saving downloaded pictures, for receive picture from memory(if saved)
+- Design 😃
+
