@@ -23,7 +23,6 @@ final class LaunchListViewModel {
     private var cancellable: Set<AnyCancellable> = []
     
     @Published var error: String = ""
-    @Published var isDataLoaded: Bool = false
     @Published var searchText: String = ""
     @Published var launchData: [LaunchData] = []
     var rocketData: [RocketData] = []
