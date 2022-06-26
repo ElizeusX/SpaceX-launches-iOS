@@ -1,7 +1,7 @@
 # SpaceX past launches (iOS Swift) App
 
 ## Overview
-Simple iOS app, displays information about all past SpaceX launches from [API](https://github.com/r-spacex/SpaceX-API).
+Simple iOS app, displays information about all past SpaceX launches from [API](https://github.com/r-spacex/SpaceX-API) with search and sort.
 
 **✅ Used in project:**
 - **MVVM** architecture
