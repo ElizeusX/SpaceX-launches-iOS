@@ -12,7 +12,7 @@ class LaunchCell: UICollectionViewCell {
     @IBOutlet private weak var numberLabel: UILabel!
     @IBOutlet private weak var successIcon: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var rocketLabel: UILabel!
 
@@ -44,7 +44,6 @@ class LaunchCell: UICollectionViewCell {
             imageColor: .white
         )
         rocketLabel.text = rocketData?.name.uppercased()
-        imageView.downloaded(from: launchData.links.patch?.small ?? "")
     }
 
     private func setSuccessColor(launchData: LaunchData) -> UIColor {

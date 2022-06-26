@@ -20,16 +20,16 @@ final class LaunchListViewModel {
     
     var service = LaunchService()
     
-    private var cancellable: Set<AnyCancellable> = []
+    private var cancellables: Set<AnyCancellable> = []
     
     @Published var error: String = ""
-    @Published var isDataLoaded: Bool = false
     @Published var searchText: String = ""
     @Published var launchData: [LaunchData] = []
     var rocketData: [RocketData] = []
     var launchCount: Int? {
         launchData.count
     }
+    var pictures: [String:UIImage] = [:]
     
     func fetchData() {
         service.fetchLaunchData { [self] result in
@@ -69,12 +69,30 @@ final class LaunchListViewModel {
                         $0.name.lowercased().contains(searchText)
                     }
                 }
-            }.store(in: &cancellable)
+            }.store(in: &cancellables)
     }
     
     func loadSortedData(sortBy: SortBy) {
         UserDefaultsProvider.set(key: .sort, value: sortBy.rawValue)
         self.launchData = sortedLaunchData(sortBy: sortBy)
+    }
+
+    func setPictureByUrl(from link: String, imageView: UIImageView) {
+        if let picture = self.pictures[link] {
+            imageView.image = picture
+        } else {
+            guard let url = URL(string: link) else { return }
+
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else { return }
+
+                DispatchQueue.main.async { [weak self] in
+                    self?.pictures[link] = UIImage(data: data)
+                    imageView.image = self?.pictures[link]
+                }
+            }
+            task.resume()
+        }
     }
     
     // MARK: - Private
