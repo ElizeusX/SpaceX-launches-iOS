@@ -12,6 +12,7 @@ class LaunchDetailViewModel {
 
     var launchData: LaunchData?
     var rocketData: RocketData?
+    var picture: UIImage?
 
     func successColor() -> UIColor {
         guard let success = launchData?.success else { return .gray }
