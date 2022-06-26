@@ -13,6 +13,7 @@ Simple iOS app, displays information about all past SpaceX launches from [API](h
   - Alamofire
 
 ## Things that could be improved
-- Receiving pictures: save downloaded pictures and receive from memory
+- Save pictures by using CoreData
+- Formatting the date, it is better to implement in models
 - Design 😃
 
