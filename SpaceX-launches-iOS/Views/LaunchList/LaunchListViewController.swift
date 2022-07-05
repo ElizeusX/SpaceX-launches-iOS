@@ -33,9 +33,11 @@ class LaunchListViewController: UIViewController {
     }
 
     private func setupCollectionView() {
+        let cellName = Constants.Cells.launchCell
+        let nibName = (cellName.prefix(1).capitalized + cellName.dropFirst())
         self.collectionView.register(
-            UINib(nibName: "LaunchCell", bundle: nil),
-            forCellWithReuseIdentifier: "launchCell"
+            UINib(nibName: nibName, bundle: nil),
+            forCellWithReuseIdentifier: cellName
         )
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -149,7 +151,7 @@ extension LaunchListViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: LaunchCell = collectionView.dequeueReusableCell(withReuseIdentifier: "launchCell", for: indexPath) as! LaunchCell
+        let cell: LaunchCell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.launchCell, for: indexPath) as! LaunchCell
         let launch = viewModel.cellLaunchItem(for: indexPath.item)
         let rocket = viewModel.cellCurrentRocket(launch: launch)
         cell.setupCell(launchData: launch, rocketData: rocket)
