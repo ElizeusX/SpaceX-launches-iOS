@@ -17,20 +17,20 @@ enum SortBy: String {
 }
 
 final class LaunchListViewModel {
-    
-    var service = LaunchService()
-    
+
+    private var service = LaunchService()
     private var cancellables: Set<AnyCancellable> = []
-    
-    @Published var error: String = ""
+
+    @Published private var error: String = ""
+    @Published private var launchData: [LaunchData] = []
     @Published var searchText: String = ""
-    @Published var launchData: [LaunchData] = []
+
     var rocketData: [RocketData] = []
     var launchCount: Int? {
         launchData.count
     }
     var pictures: [String:UIImage] = [:]
-    
+
     func fetchData() {
         service.fetchLaunchData { [self] result in
             switch result {
@@ -45,16 +45,16 @@ final class LaunchListViewModel {
             }
         }
     }
-    
+
     func cellLaunchItem(for row: Int) -> LaunchData {
         return launchData[row]
     }
-    
+
     // Set rocket for current launch
     func cellCurrentRocket(launch: LaunchData) -> RocketData? {
         return self.rocketData.filter { $0.id == launch.rocket }.first
     }
-    
+
     func setupSearchTextObserver() {
         $searchText
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
@@ -71,7 +71,7 @@ final class LaunchListViewModel {
                 }
             }.store(in: &cancellables)
     }
-    
+
     func loadSortedData(sortBy: SortBy) {
         UserDefaultsProvider.set(key: .sort, value: sortBy.rawValue)
         self.launchData = sortedLaunchData(sortBy: sortBy)
@@ -94,19 +94,38 @@ final class LaunchListViewModel {
             task.resume()
         }
     }
-    
-    // MARK: - Private
-    
+
+    func showErrorAlert(controller: UIViewController) {
+        $error.sink { error in
+            if !error.isEmpty {
+                let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default)
+                alert.addAction(action)
+                controller.present(alert, animated: true)
+            }
+        }.store(in: &cancellables)
+    }
+
+    func reloadCollectionView(collectionView: UICollectionView) {
+        $launchData.sink { data in
+            if !data.isEmpty {
+                collectionView.reloadData()
+            }
+        }.store(in: &cancellables)
+    }
+
+    // MARK: Private
+
     private func sortedSourceLaunchData(data: [LaunchData]) -> [LaunchData] {
         let sortByRawValue = UserDefaultsProvider.string(key: .sort) ?? SortBy.lastDate.rawValue
         let sortBy = SortBy(rawValue: sortByRawValue) ?? SortBy.lastDate
         
         return sortedLaunchData(sourceData: data, sortBy: sortBy)
     }
-    
+
     private func sortedLaunchData(sourceData: [LaunchData] = [], sortBy: SortBy) -> [LaunchData] {
         let dataForSort = sourceData.isEmpty ? launchData : sourceData
-        
+
         switch sortBy {
         case .firstDate:
             return sortedByDate(data: dataForSort, fromFirst: true)
@@ -120,7 +139,7 @@ final class LaunchListViewModel {
             return sortedByName(data: dataForSort)
         }
     }
-    
+
     private func sortedByDate(data: [LaunchData], fromFirst: Bool) -> [LaunchData] {
         if fromFirst {
             return data.sorted { $0.dateUtc < $1.dateUtc }
@@ -128,7 +147,7 @@ final class LaunchListViewModel {
             return data.sorted { $0.dateUtc > $1.dateUtc }
         }
     }
-    
+
     private func sortedBySuccess(data: [LaunchData], fromSuccess: Bool) -> [LaunchData] {
         // Sorted by last date for sort by success or fail launches
         let sortedDataByDate = sortedByDate(data: data, fromFirst: false)
@@ -139,7 +158,7 @@ final class LaunchListViewModel {
             return sortedDataByDate.sorted { !($0.success ?? true) && ($1.success ?? false) }
         }
     }
-    
+
     private func sortedByName(data: [LaunchData]) -> [LaunchData] {
         return data.sorted { $0.name < $1.name }
     }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 
 class LaunchListViewController: UIViewController {
 
@@ -14,7 +13,6 @@ class LaunchListViewController: UIViewController {
     @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
 
     private var viewModel = LaunchListViewModel()
-    private var cancellables: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +22,8 @@ class LaunchListViewController: UIViewController {
         setupSearchBar()
         setupCollectionView()
         setupRefreshControl()
-        reloadCollectionView()
-        showError()
+        viewModel.reloadCollectionView(collectionView: collectionView)
+        viewModel.showErrorAlert(controller: self)
     }
 
     @IBAction private func sortButtonAction(_ sender: UIBarButtonItem) {
@@ -55,15 +53,6 @@ class LaunchListViewController: UIViewController {
             self.viewModel.fetchData()
             self.collectionView.refreshControl?.endRefreshing()
         }
-    }
-
-    private func reloadCollectionView() {
-        viewModel.$launchData.sink { data in
-            if !data.isEmpty {
-                self.startSpinner(spin: false)
-                self.collectionView.reloadData()
-            }
-        }.store(in: &cancellables)
     }
 
     private func setupSearchBar() {
@@ -114,29 +103,13 @@ class LaunchListViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-    private func showError() {
-        self.viewModel.$error.sink { error in
-            if !error.isEmpty {
-                self.errorAlert(message: error)
-            }
-        }.store(in: &cancellables)
-    }
-
-    private func errorAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default)
-        alert.addAction(action)
-
-        self.present(alert, animated: true)
-    }
-
-    private func startSpinner(spin: Bool){
-        DispatchQueue.main.async{
+    private func startSpinner(spin: Bool) {
+        DispatchQueue.main.async {
             self.activityIndicator.isHidden = !spin
-            if (spin){
+            if (spin) {
                 self.activityIndicator.startAnimating()
             }
-            else{
+            else {
                 self.activityIndicator.stopAnimating()
             }
         }
@@ -156,6 +129,7 @@ extension LaunchListViewController: UICollectionViewDataSource, UICollectionView
         let rocket = viewModel.cellCurrentRocket(launch: launch)
         cell.setupCell(launchData: launch, rocketData: rocket)
         viewModel.setPictureByUrl(from: launch.links.patch?.small ?? "", imageView: cell.imageView)
+        self.startSpinner(spin: false)
 
         return cell
     }
