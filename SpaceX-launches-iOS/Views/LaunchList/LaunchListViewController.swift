@@ -66,7 +66,6 @@ class LaunchListViewController: UIViewController {
         let launchDetailVC = LaunchDetailViewController(nibName: "LaunchDetailViewController", bundle: nil)
         launchDetailVC.viewModel.launchData = launchData
         launchDetailVC.viewModel.rocketData = rocketData
-        launchDetailVC.viewModel.picture = viewModel.pictures[launchData.links.patch?.small ?? ""]
 
         present(launchDetailVC, animated: true, completion: nil)
     }
@@ -125,10 +124,7 @@ extension LaunchListViewController: UICollectionViewDataSource, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LaunchCell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.launchCell, for: indexPath) as! LaunchCell
-        let launch = viewModel.cellLaunchItem(for: indexPath.item)
-        let rocket = viewModel.cellCurrentRocket(launch: launch)
-        cell.setupCell(launchData: launch, rocketData: rocket)
-        viewModel.setPictureByUrl(from: launch.links.patch?.small ?? "", imageView: cell.imageView)
+        cell.setupCell(viewModel: viewModel, indexPath: indexPath)
         self.startSpinner(spin: false)
 
         return cell

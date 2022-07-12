@@ -12,7 +12,7 @@ class LaunchCell: UICollectionViewCell {
     @IBOutlet private weak var numberLabel: UILabel!
     @IBOutlet private weak var successIcon: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var rocketLabel: UILabel!
 
@@ -29,30 +29,24 @@ class LaunchCell: UICollectionViewCell {
         self.layer.masksToBounds = false
     }
 
-    func setupCell(launchData: LaunchData, rocketData: RocketData?) {
-        nameLabel.text = launchData.name
+    func setupCell(viewModel: LaunchListViewModel, indexPath: IndexPath) {
+        let launch = viewModel.cellLaunchItem(for: indexPath.item)
+        let rocket = viewModel.cellCurrentRocket(launch: launch)
+
+        nameLabel.text = launch.name
         nameLabel.layer.leftLineForHeader()
 
-        successIcon.image = UIImage(systemName: setSuccessIcon(launchData: launchData))
-        successIcon.tintColor = setSuccessColor(launchData: launchData)
+        successIcon.image = UIImage(systemName: viewModel.setSuccessIcon(launchData: launch))
+        successIcon.tintColor = viewModel.setSuccessColor(launchData: launch)
 
-        numberLabel.text = "#\(launchData.flightNumber)"
+        numberLabel.text = viewModel.setName(launchData: launch)
         dateLabel.addLeading(
             image: UIImage(systemName: Constants.Icons.calendar) ?? UIImage(),
-            text: DateService.convertStringToDate(from: launchData.dateUtc ) ?? "",
+            text: viewModel.setDate(launchData: launch),
             size: 15,
             imageColor: .white
         )
-        rocketLabel.text = rocketData?.name.uppercased()
-    }
-
-    private func setSuccessColor(launchData: LaunchData) -> UIColor {
-        guard let success = launchData.success else { return .gray }
-        return success ? .green : .red
-    }
-
-    private func setSuccessIcon(launchData: LaunchData) -> String {
-        guard let success = launchData.success else { return Constants.Icons.questionmark}
-        return success ? Constants.Icons.success : Constants.Icons.fail
+        rocketLabel.text = rocket?.name.uppercased()
+        imageView.downloaded(from: viewModel.linkPatchPicture(launchData: launch))
     }
 }

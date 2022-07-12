@@ -12,7 +12,7 @@ class LaunchDetailViewModel {
 
     var launchData: LaunchData?
     var rocketData: RocketData?
-    var picture: UIImage?
+    var picture: UIImageView?
 
     func successColor() -> UIColor {
         guard let success = launchData?.success else { return .gray }
@@ -22,5 +22,9 @@ class LaunchDetailViewModel {
     func successIcon() -> String {
         guard let success = launchData?.success else { return Constants.Icons.questionmark}
         return success ? Constants.Icons.success : Constants.Icons.fail
+    }
+
+    func linkPatchPicture() -> String {
+        return launchData?.links.patch?.small ?? ""
     }
 }

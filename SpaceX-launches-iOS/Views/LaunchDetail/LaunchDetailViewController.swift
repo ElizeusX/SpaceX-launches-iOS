@@ -63,7 +63,7 @@ class LaunchDetailViewController: UIViewController {
         } else {
             detailLabel.isHidden = true
         }
-        imageView.image = viewModel.picture
+        imageView.downloaded(from: viewModel.linkPatchPicture())
     }
 
     private func setupRocketLabels() {

@@ -34,6 +34,6 @@ struct Links: Codable {
 }
 
 struct Patch: Codable {
-    let small: String?  // Picture
+    let small: String?
 }
 

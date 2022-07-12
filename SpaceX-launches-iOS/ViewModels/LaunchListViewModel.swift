@@ -29,7 +29,6 @@ final class LaunchListViewModel {
     var launchCount: Int? {
         launchData.count
     }
-    var pictures: [String:UIImage] = [:]
 
     func fetchData() {
         service.fetchLaunchData { [self] result in
@@ -77,24 +76,6 @@ final class LaunchListViewModel {
         self.launchData = sortedLaunchData(sortBy: sortBy)
     }
 
-    func setPictureByUrl(from link: String, imageView: UIImageView) {
-        if let picture = self.pictures[link] {
-            imageView.image = picture
-        } else {
-            guard let url = URL(string: link) else { return }
-
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data, error == nil else { return }
-
-                DispatchQueue.main.async { [weak self] in
-                    self?.pictures[link] = UIImage(data: data)
-                    imageView.image = self?.pictures[link]
-                }
-            }
-            task.resume()
-        }
-    }
-
     func showErrorAlert(controller: UIViewController) {
         $error.sink { error in
             if !error.isEmpty {
@@ -112,6 +93,28 @@ final class LaunchListViewModel {
                 collectionView.reloadData()
             }
         }.store(in: &cancellables)
+    }
+
+    func setName(launchData: LaunchData) -> String {
+        return "#\(launchData.flightNumber)"
+    }
+
+    func setSuccessColor(launchData: LaunchData) -> UIColor {
+        guard let success = launchData.success else { return .gray }
+        return success ? .green : .red
+    }
+
+    func setSuccessIcon(launchData: LaunchData) -> String {
+        guard let success = launchData.success else { return Constants.Icons.questionmark}
+        return success ? Constants.Icons.success : Constants.Icons.fail
+    }
+
+    func linkPatchPicture(launchData: LaunchData) -> String {
+        return launchData.links.patch?.small ?? ""
+    }
+
+    func setDate(launchData: LaunchData) -> String {
+        return DateService.convertStringToDate(from: launchData.dateUtc) ?? ""
     }
 
     // MARK: Private
