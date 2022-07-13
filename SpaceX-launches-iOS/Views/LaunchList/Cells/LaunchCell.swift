@@ -36,13 +36,13 @@ class LaunchCell: UICollectionViewCell {
         nameLabel.text = launch.name
         nameLabel.layer.leftLineForHeader()
 
-        successIcon.image = UIImage(systemName: viewModel.setSuccessIcon(launchData: launch))
-        successIcon.tintColor = viewModel.setSuccessColor(launchData: launch)
+        successIcon.image = viewModel.successIcon(launchData: launch)
+        successIcon.tintColor = viewModel.successColor(launchData: launch)
 
-        numberLabel.text = viewModel.setName(launchData: launch)
+        numberLabel.text = viewModel.flightNumber(launchData: launch)
         dateLabel.addLeading(
             image: UIImage(systemName: Constants.Icons.calendar) ?? UIImage(),
-            text: viewModel.setDate(launchData: launch),
+            text: viewModel.date(launchData: launch),
             size: 15,
             imageColor: .white
         )

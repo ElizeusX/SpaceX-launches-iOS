@@ -43,15 +43,15 @@ class LaunchDetailViewController: UIViewController {
         nameLabel.text = launchData.name
         nameLabel.layer.leftLineForHeader()
 
-        numberLabel.text = "#\(launchData.flightNumber)"
+        numberLabel.text = viewModel.flightNumber()
         successLabel.addLeading(
-            image: UIImage(systemName: viewModel.successIcon()) ?? UIImage(),
+            image: viewModel.successIcon(),
             text: "Success",
             imageColor: viewModel.successColor()
         )
         dateLabel.addLeading(
             image: UIImage(systemName: Constants.Icons.calendar) ?? UIImage(),
-            text: DateService.convertStringToDate(from: launchData.dateUtc ) ?? "",
+            text: viewModel.date(),
             imageColor: .white
         )
         if let detail = launchData.details {
@@ -74,11 +74,11 @@ class LaunchDetailViewController: UIViewController {
         rocketNameLabel.text = rocketData.name
         rocketHeightLabel.addLeading(
             image: UIImage(systemName: Constants.Icons.height) ?? UIImage(),
-            text: "\(rocketData.height.meters) m",
+            text: viewModel.rocektMeters(),
             imageColor: .white)
         rocketMassLabel.addLeading(
             image: UIImage(systemName: Constants.Icons.mass) ?? UIImage(),
-            text: "\(rocketData.mass.kg) Kg",
+            text: viewModel.rocektWeight(),
             imageColor: .white)
         if let detail = rocketData.description {
             rocketDetailLabel.addLeading(
@@ -88,7 +88,7 @@ class LaunchDetailViewController: UIViewController {
         } else {
             rocketDetailLabel.isHidden = true
         }
-        engineNumberLabel.text = "#\(rocketData.engines.number)"
+        engineNumberLabel.text = viewModel.rocketEngineNumber()
         engineType.text = rocketData.engines.type
         engineVersion.text = rocketData.engines.version
     }

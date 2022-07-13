@@ -95,25 +95,26 @@ final class LaunchListViewModel {
         }.store(in: &cancellables)
     }
 
-    func setName(launchData: LaunchData) -> String {
+    func flightNumber(launchData: LaunchData) -> String {
         return "#\(launchData.flightNumber)"
     }
 
-    func setSuccessColor(launchData: LaunchData) -> UIColor {
+    func successColor(launchData: LaunchData) -> UIColor {
         guard let success = launchData.success else { return .gray }
         return success ? .green : .red
     }
 
-    func setSuccessIcon(launchData: LaunchData) -> String {
-        guard let success = launchData.success else { return Constants.Icons.questionmark}
-        return success ? Constants.Icons.success : Constants.Icons.fail
+    func successIcon(launchData: LaunchData) -> UIImage {
+        guard let success = launchData.success else { return UIImage(systemName: Constants.Icons.questionmark) ?? UIImage() }
+        let icon = success ? Constants.Icons.success : Constants.Icons.fail
+        return UIImage(systemName: icon) ?? UIImage()
     }
 
     func linkPatchPicture(launchData: LaunchData) -> String {
         return launchData.links.patch?.small ?? ""
     }
 
-    func setDate(launchData: LaunchData) -> String {
+    func date(launchData: LaunchData) -> String {
         return DateService.convertStringToDate(from: launchData.dateUtc) ?? ""
     }
 
